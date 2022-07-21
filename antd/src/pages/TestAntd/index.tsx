@@ -1,8 +1,9 @@
 import React from "react";
-import { Result, Button, Modal } from "antd";
+import { Result, Button, Modal, Image } from "antd";
 import s from "./index.module.less";
+import logo from "../../assets/images/logo.svg";
 
-function TestAntd() {
+const TestAntd: React.FC = () => {
   const [openModal, setOpenModal] = React.useState(false);
   const handleOk = () => {
     console.log("ok ok");
@@ -32,12 +33,10 @@ function TestAntd() {
         onOk={handleOk}
         onCancel={() => setOpenModal(false)}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <Image src={logo} />
       </Modal>
     </>
   );
-}
+};
 
 export default TestAntd;
