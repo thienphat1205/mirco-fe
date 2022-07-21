@@ -10,6 +10,7 @@ interface CustomDrawerProps {
   footer: React.ReactNode | null;
   title: string;
   width?: string | number | undefined;
+  children?: any
 }
 
 const CustomDrawer: React.FC<CustomDrawerProps> = (props) => {

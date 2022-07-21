@@ -48,7 +48,15 @@ module.exports = {
             options: {
               lessOptions: {
                 modifyVars: {
-                  // "primary-color": "#1DA57A",
+                  "@primary-color": "#F26522",
+                  "@text-color": "#00476F",
+                  "@font-size-base": "13px",
+                  "@table-header-bg": "#fff",
+                  "@table-header-color": "#808080",
+                  "@table-row-hover-bg": "#fcf4d7",
+                  "font-family": "Google Sans Medium",
+                  "table-header-bg": "#fafafa",
+                  "table-header-color": "#808080",
                 },
                 javascriptEnabled: true,
               },

@@ -1,3 +1,4 @@
+import React from "react";
 import Images from "@/constants/images";
 import { getCheckInCodeAPI } from "@/services/checkin";
 import { dialog, getLocalStorage } from "@/utils/utils";
