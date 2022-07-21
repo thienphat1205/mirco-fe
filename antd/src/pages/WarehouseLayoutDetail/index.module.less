@@ -1,0 +1,396 @@
+@import "../../variables.less";
+
+.root {
+  height: 100%;
+  .titlePage {
+    display: flex;
+    align-items: center;
+    span {
+      font-family: "Google Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+
+    padding: 13px 13px 0 13px;
+  }
+  .viewContentTab {
+    height: fit-content;
+    overflow: hidden;
+  }
+}
+
+.contentTab {
+  height: fit-content;
+  display: flex;
+  .viewLeft {
+    height: calc(100vh - 120px);
+    width: 25%;
+    padding: 12px;
+    .wrapperContentLeft {
+      height: 100%;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      &::-webkit-scrollbar-track {
+        margin: 0 30px;
+      }
+      &::-webkit-scrollbar-track-piece {
+        background-color: #fafafa;
+      }
+      &::-webkit-scrollbar-thumb:vertical {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      .viewLoading {
+        margin: 1rem 0;
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      :global {
+        .ant-picker {
+          width: 100%;
+          border-radius: 10px;
+          min-height: 38px;
+          border: none;
+          background: #fafafa !important;
+          box-shadow: none !important;
+        }
+      }
+    }
+  }
+  .viewRight {
+    height: calc(100vh - 114px);
+    width: 75%;
+    position: relative;
+    border-left: 1px solid @secondaryColor;
+    position: relative;
+    .contentRight {
+      height: calc(100% - 64px);
+      overflow: auto;
+      .viewRightEmpty {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        color: #e64c4c;
+      }
+    }
+    .footerRight {
+      padding: 0 16px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: 64px;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 0px 0px 12px 0px;
+      .viewButton {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        .btnClone {
+          background: rgba(0, 0, 0, 0.05);
+          color: rgba(0, 0, 0, 0.87);
+        }
+        .buttonAction {
+          display: flex;
+          align-items: center;
+          .btnRemove {
+            background: rgba(0, 0, 0, 0.05);
+            border-radius: 10px;
+            color: rgba(0, 0, 0, 0.87);
+            display: flex;
+            align-items: center;
+            width: 74px;
+            span {
+              line-height: 16px;
+            }
+            &__icon {
+              font-size: 16px;
+              margin-right: 8px;
+            }
+          }
+          button:not(:first-child) {
+            margin-left: 8px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.itemArea {
+  width: 97%;
+  padding: 13px;
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  position: relative;
+  margin-bottom: 9px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  &&--active {
+    background-color: @secondaryColor;
+    .itemAreaViewLeft {
+      .textName,
+      .textCode {
+        color: #fff;
+      }
+    }
+    .itemAreaViewRight {
+      .label {
+        color: #fff;
+      }
+    }
+    &::before {
+      content: "";
+      background-color: @secondaryColor;
+      height: 10px;
+      width: 10px;
+      transform: rotate(135deg);
+      position: absolute;
+      right: -4px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+    }
+  }
+  .itemAreaViewLeft {
+    width: 70%;
+    .textEllipsis {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+    .textName {
+      font-family: "Google Sans Medium";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 18px;
+      display: flex;
+      align-items: center;
+      color: @secondaryColor;
+      margin-bottom: 4px;
+      .textEllipsis();
+    }
+    .textCode {
+      font-family: "Google Sans Medium";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 15px;
+      display: flex;
+      align-items: center;
+      color: #575757;
+      margin-bottom: 0;
+      width: 90%;
+      .textEllipsis();
+    }
+  }
+  .itemAreaViewRight {
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    .label {
+      font-family: "Google Sans Medium";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 9px;
+      color: #575757;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.btnAddNewArea {
+  cursor: pointer;
+  width: 97%;
+  height: 51px;
+  border: 1px dashed rgba(0, 0, 0, 0.38);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #575757;
+  span {
+    font-family: "Google Sans Medium";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+  }
+  &:hover {
+    border-color: @primaryColor;
+    color: @primaryColor;
+  }
+  .icon {
+    margin-right: 8px;
+  }
+}
+
+.formCreateNewArea {
+  padding: 1rem;
+  .textTitle {
+    font-family: "Google Sans Medium";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    text-align: center;
+    margin-bottom: 1rem;
+  }
+  .viewButton {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .btnConfirm {
+      background: @secondaryColor;
+      color: #fff;
+      min-width: 93px;
+    }
+  }
+  :global {
+    .ant-form-item-label
+      > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+      display: none;
+    }
+    .ant-form-item-label > label {
+      font-weight: 500;
+      color: @colorPlaceholder;
+    }
+    .ant-form-item {
+      margin-bottom: 12px;
+    }
+    .ant-input {
+      width: 100%;
+      border-radius: 10px;
+      height: 38px;
+      background: #fafafa;
+      border-radius: 10px;
+      border: 1px solid #fafafa;
+      color: @secondaryColor;
+    }
+  }
+}
+
+.formConfigArea {
+  padding: 1rem;
+  .viewBtnGroup {
+    display: flex;
+    justify-content: flex-end;
+    height: 28px;
+    .btnViewHistory {
+      font-weight: 700;
+      font-size: 14px;
+      color: @secondaryColor;
+      background-color: transparent;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .textArea {
+    border-radius: 4px;
+    resize: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  .selectTag {
+    :global {
+      .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        border-radius: 10px;
+        background: #fafafa;
+        min-height: 38px;
+      }
+      .ant-select-single
+        .ant-select-selector
+        .ant-select-selection-placeholder {
+        margin-top: 3px;
+      }
+      .ant-select-single .ant-select-selector .ant-select-selection-item {
+        display: flex;
+        align-items: center;
+      }
+      .ant-select-arrow {
+        color: @secondaryColor;
+      }
+    }
+  }
+  :global {
+    .ant-form-item-label
+      > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+      display: none;
+    }
+    .ant-form-item-label > label {
+      font-weight: 500;
+      color: @colorPlaceholder;
+    }
+    .ant-form-item {
+      margin-bottom: 12px;
+    }
+    .ant-input {
+      width: 100%;
+      border-radius: 10px;
+      min-height: 38px;
+      background: #fafafa;
+      border-radius: 10px;
+      color: @colorPlaceholder;
+    }
+  }
+}
+
+.viewHistory {
+  p {
+    margin: 0;
+    color: @colorPlaceholder;
+  }
+  p:not(:first-child) {
+    margin-top: 4px;
+  }
+}
+
+.drawer {
+  &__footer {
+    padding: 12px;
+    display: flex;
+    justify-content: flex-end;
+    .btnSubmit {
+      background: @secondaryColor;
+      color: #fff;
+    }
+    .btnCancel {
+      background: @colorPlaceholder;
+      color: #fff;
+    }
+    button {
+      min-width: 75px;
+    }
+    button:not(:first-child) {
+      margin-left: 8px;
+    }
+  }
+}

@@ -1,0 +1,267 @@
+@import "../../variables.less";
+
+.configShift {
+  .comboBox {
+    display: flex;
+    justify-content: space-between;
+    .viewSelectFile {
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      .label {
+        font-family: "Google Sans Medium";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: @colorPlaceholder;
+        margin: 0;
+        min-width: 80px;
+      }
+      .select {
+        margin: 0 1rem;
+        :global {
+          .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+            border-radius: 10px;
+            width: 166px;
+            background: #fafafa;
+          }
+          .ant-select-arrow {
+            color: @secondaryColor;
+          }
+        }
+      }
+      .textDownload {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 13px;
+        font-style: italic;
+        text-decoration-line: underline;
+        color: @primaryColor;
+        margin-left: 1rem;
+      }
+    }
+    .viewButtonDropdown {
+      .btnDropdown {
+        border-radius: 50%;
+        box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.03),
+          1px 1px 2px 1px rgba(0, 0, 0, 0.03) !important;
+      }
+    }
+  }
+  .viewCalendarShift {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    height: fit-content;
+    .textWeekday {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 92px;
+      display: flex;
+      justify-content: center;
+      .text {
+        font-family: "Google Sans Medium";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        color: @colorPlaceholder;
+        margin: 0 6px 0 0;
+      }
+      .icon {
+        font-size: 11px;
+      }
+      .btnEdit {
+        cursor: pointer;
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        box-shadow: 1px 1px 16px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+    .shifts {
+      margin-top: 20px;
+      div.itemShift:not(:first-child) {
+        margin-top: 12px;
+      }
+      .itemShift {
+        min-width: 92px;
+        min-height: 74px;
+        background: #fff;
+        box-shadow: -1px 1px 2px 1px rgba(0, 0, 0, 0.03),
+          1px 1px 2px 1px rgba(0, 0, 0, 0.03);
+        border-radius: 12px;
+        padding: 4px;
+        p {
+          font-family: "Google Sans Medium";
+          font-style: normal;
+          font-weight: 500;
+          margin: 0;
+        }
+        .textTime {
+          font-size: 13px;
+          line-height: 17px;
+          color: #575757;
+        }
+        .textCountEmployee {
+          font-size: 10px;
+          line-height: 13px;
+          color: #14ae5c;
+          margin-top: 3px !important;
+        }
+      }
+    }
+  }
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  &__icon {
+    color: #74d89c;
+    margin-left: 4px;
+  }
+}
+
+.uploadFileConfigShift {
+  .btnUpload {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: @secondaryColor;
+    color: #fff;
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 10px;
+    span {
+      margin-right: 8px;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.contentDropdown {
+  background: #fff;
+  box-shadow: 1px 1px 16px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  .option {
+    height: 40px;
+    min-width: 211px;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    .icon {
+      margin-right: 0.5rem;
+    }
+    &__delete {
+      color: red;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.formUpdateShifts {
+  min-width: 950px;
+  .iconRemove {
+    color: #e64c4c;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  .selectEmployee {
+    :global {
+      .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        height: 92px;
+        overflow: auto;
+        padding: 12px;
+        box-sizing: border-box;
+        &::-webkit-scrollbar {
+          width: 6px;
+          border-top-right-radius: 10px;
+          border-bottom-right-radius: 10px;
+        }
+        &::-webkit-scrollbar-track {
+          margin: 0 30px;
+        }
+        &::-webkit-scrollbar-track-piece {
+          background-color: #fafafa;
+        }
+        &::-webkit-scrollbar-thumb:vertical {
+          background: #808080;
+          border-radius: 10px;
+        }
+      }
+    }
+  }
+  :global {
+    .ant-form-vertical .ant-form-item-label,
+    .ant-col-24.ant-form-item-label,
+    .ant-col-xl-24.ant-form-item-label {
+      min-height: 40px;
+    }
+    .ant-form-item-label > label {
+      font-family: "Google Sans Medium";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 15px;
+      color: @colorPlaceholder;
+    }
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      border-radius: 10px;
+      height: fit-content;
+      height: 38px;
+      width: 100%;
+      border: none;
+      background-color: #fafafa;
+      box-shadow: none !important;
+    }
+    .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+    .ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder {
+      margin-top: 2px;
+    }
+    .ant-select-show-search.ant-select:not(.ant-select-customize-input)
+      .ant-select-selector
+      input {
+      height: 100%;
+    }
+    .ant-select-arrow {
+      color: @secondaryColor;
+    }
+  }
+}
+
+.drawer {
+  &__footer {
+    padding: 12px;
+    display: flex;
+    justify-content: flex-end;
+    .btnSubmit {
+      background: @secondaryColor;
+      color: #fff;
+    }
+    .btnCancel {
+      background: @colorPlaceholder;
+      color: #fff;
+    }
+    button {
+      min-width: 75px;
+    }
+    button:not(:first-child) {
+      margin-left: 8px;
+    }
+  }
+}

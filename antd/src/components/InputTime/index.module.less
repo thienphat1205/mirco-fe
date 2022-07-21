@@ -1,0 +1,23 @@
+@import "../../variables.less";
+
+.viewInputTime {
+  input {
+    width: 100%;
+    max-width: 115px;
+    min-width: 115px;
+    height: 38px;
+    border: 1px solid #d1d1d1;
+    border-radius: 10px;
+    color: @secondaryColor;
+    padding: 0 7px 0 12px;
+    outline: none !important;
+    background: #fafafa;
+    &:hover {
+      border: 1px solid #ff8b4d;
+    }
+    &:focus {
+      border-color: #ff8b4d;
+      box-shadow: 0 0 0 2px rgb(242 101 34 / 20%);
+    }
+  }
+}

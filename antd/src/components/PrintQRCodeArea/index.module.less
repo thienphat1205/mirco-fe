@@ -1,0 +1,76 @@
+.printQRCode {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .areaName {
+    font-family: "Google Sans Medium";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 43px;
+    margin-bottom: 8px;
+  }
+  .areaCode {
+    font-family: "Google Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 25px;
+    margin-bottom: 8px;
+  }
+  .viewButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btnPrint {
+      background: rgba(0, 0, 0, 0.05);
+      color: rgba(0, 0, 0, 0.87);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 74px;
+      span {
+        line-height: 16px;
+      }
+      &__icon {
+        font-size: 16px;
+        margin-right: 8px;
+      }
+    }
+    button:not(:first-child) {
+      margin-left: 8px;
+    }
+  }
+}
+
+.viewToPrint {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  p {
+    margin: 0 0 8px 0;
+  }
+  .areaName {
+    display: none;
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 43px;
+    width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .areaCode {
+    font-family: "Google Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+  }
+}

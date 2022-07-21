@@ -1,0 +1,132 @@
+@import "../../variables.less";
+
+@background: #fafafa;
+@placeholderInputSearch: #9b9b9b;
+
+.root {
+  height: 100%;
+  .titlePage {
+    font-family: "Google Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 13px 13px 0 13px;
+  }
+  .viewContentTab {
+    height: fit-content;
+    overflow: auto;
+    height: calc(100vh - 150px);
+  }
+}
+
+.viewToPrint {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .textCode {
+    max-width: 400px;
+    word-wrap: break-word;
+  }
+}
+
+.viewLoading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .viewSkeleton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.formInputUserId {
+  padding: 16px;
+  background-color: @white;
+  .viewSearch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    .viewItem {
+      display: flex;
+      flex-direction: row;
+      background-color: #f1f1f1;
+      border-radius: 10px;
+      padding: 6px 10px;
+      border: 1px solid #e5e5e5;
+      .input {
+        border: 1px solid #f1f1f1;
+        width: 375px;
+        color: @colorPlaceholder;
+        background-color: transparent;
+      }
+    }
+  }
+  .viewToPrint {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .viewButton {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .btnConfirm {
+      padding: 6px 24px 8px 24px;
+      font-size: 14px;
+      background: @primaryColor;
+      color: @white;
+      min-width: 93px;
+      border-radius: 8px;
+    }
+  }
+  :global {
+    .ant-form-item-label {
+      padding: 0px 0px 4px;
+    }
+    .ant-form-item-label
+      > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+      display: none;
+    }
+    .ant-form-item-label > label {
+      font-weight: 500;
+      color: @colorPlaceholder;
+    }
+    .ant-form-item {
+      margin-bottom: 12px;
+    }
+    input:focus {
+      outline: none;
+    }
+    ::placeholder {
+      /* Chrome, Firefox, Opera, Safari 10.1+ */
+      color: @placeholderInputSearch;
+      opacity: 1; /* Firefox */
+    }
+
+    :-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: @placeholderInputSearch;
+    }
+
+    ::-ms-input-placeholder {
+      /* Microsoft Edge */
+      color: @placeholderInputSearch;
+    }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Firefox */
+    input[type="number"] {
+      -moz-appearance: textfield;
+    }
+  }
+}

@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
 
+const check = "LOCAL";
+
 // Mount function to start up the app
 const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
   const history =
@@ -29,7 +31,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 
 // If we are in development and in isolation,
 // call mount immediately
-if (process.env.NODE_ENV === "development") {
+if (check === "LOCAL") {
   const devRoot = document.querySelector("#_antd-dev-root");
 
   if (devRoot) {

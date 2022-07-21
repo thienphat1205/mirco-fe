@@ -1,0 +1,39 @@
+.customDrawer {
+  &__header {
+    height: 68px;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    .text {
+      font-family: "Google Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 31px;
+      margin: 0;
+    }
+    .icon {
+      cursor: pointer;
+      font-size: 20px;
+    }
+  }
+  :global {
+    .ant-drawer-close {
+      display: none;
+    }
+    .ant-drawer-footer {
+      padding: 0;
+    }
+    .ant-drawer-header {
+      padding: 0;
+      border: none;
+      border-radius: 0;
+      background-image: url("../../assets/images/header-drawer.png");
+    }
+    .ant-drawer-body {
+      padding: 1rem;
+    }
+  }
+}
