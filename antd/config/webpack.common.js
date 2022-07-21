@@ -1,6 +1,11 @@
+var path = require("path");
+
 module.exports = {
   resolve: {
     extensions: [".tsx", ".ts", ".jsx", ".js"],
+    alias: {
+      "@": path.resolve("src"),
+    },
   },
   module: {
     rules: [
