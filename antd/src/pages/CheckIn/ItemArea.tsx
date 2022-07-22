@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./index.module.less";
 import classnames from "classnames";
 import { IArea } from "./index";

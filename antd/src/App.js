@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
 import { Suspense } from "react";
 import "./App.less";
