@@ -59,20 +59,19 @@ export const getKeyValue =
     obj[key];
 
 export const getEnv = (): EnvType => {
-  return Environment.LOCAL;
-  // const { REACT_APP_ENV = "" } = process.env;
-  // switch (REACT_APP_ENV) {
-  //   case Environment.LOCAL:
-  //     return Environment.LOCAL;
-  //   case Environment.STAGING:
-  //     return Environment.STAGING;
-  //   case Environment.BETA:
-  //     return Environment.BETA;
-  //   case Environment.PRODUCTION:
-  //     return Environment.PRODUCTION;
-  //   default:
-  //     return Environment.STAGING;
-  // }
+  const { REACT_APP_ENV = "" } = process.env;
+  switch (REACT_APP_ENV) {
+    case Environment.LOCAL:
+      return Environment.LOCAL;
+    case Environment.STAGING:
+      return Environment.STAGING;
+    case Environment.BETA:
+      return Environment.BETA;
+    case Environment.PRODUCTION:
+      return Environment.PRODUCTION;
+    default:
+      return Environment.STAGING;
+  }
 };
 
 export const genPagination = (

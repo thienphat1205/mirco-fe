@@ -4,7 +4,6 @@ import "./App.less";
 import PageLoading from "@/components/PageLoading";
 import { Helmet } from "react-helmet";
 import routeList from "@/config/routes";
-import CheckIn from "@/pages/CheckIn";
 import { Provider } from "react-redux";
 import store from "./state/store";
 
@@ -50,7 +49,6 @@ const App = ({ history }) => {
         </Routes>
       </BrowserRouter>
     </Provider>
-   
   );
 };
 

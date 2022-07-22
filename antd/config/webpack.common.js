@@ -1,5 +1,6 @@
-var path = require("path");
-var webpack = require("webpack");
+const path = require("path");
+const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
 
 module.exports = {
   resolve: {
@@ -92,9 +93,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading
     new webpack.ProvidePlugin({
       React: "react",
     }),
+    new Dotenv(),
   ],
 };
