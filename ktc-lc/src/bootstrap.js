@@ -2,8 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
+import { getEnv } from "@/utils/utils";
 
-const check = "LOCAL";
+const ENV = getEnv();
+
+console.log("ENV", ENV);
 
 // Mount function to start up the app
 const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
@@ -31,8 +34,8 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
 
 // If we are in development and in isolation,
 // call mount immediately
-if (check === "LOCAL") {
-  const devRoot = document.querySelector("#_antd-dev-root");
+if (ENV === "LOCAL") {
+  const devRoot = document.querySelector("#ktc-lc-dev-root");
 
   if (devRoot) {
     mount(devRoot, { defaultHistory: createBrowserHistory() });

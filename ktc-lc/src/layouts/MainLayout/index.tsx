@@ -56,14 +56,14 @@ const MainLayout: React.FC = () => {
     setCollapsed(!collapsed);
   }, [collapsed]);
 
-  if (
-    !isReady ||
-    loadingGetCurrentUser ||
-    loading ||
-    loadingGetPermissions ||
-    loadingGetHubList
-  )
-    return <PageLoading />;
+  // if (
+  //   !isReady ||
+  //   loadingGetCurrentUser ||
+  //   loading ||
+  //   loadingGetPermissions ||
+  //   loadingGetHubList
+  // )
+  //   return <PageLoading />;
 
   return (
     <Suspense fallback={<PageLoading />}>
