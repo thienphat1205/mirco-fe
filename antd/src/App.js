@@ -7,12 +7,10 @@ import routeList from "@/config/routes";
 import { Provider } from "react-redux";
 import store from "./state/store";
 
-console.log("routeList", routeList);
-
 const App = ({ history }) => {
   return (
     <Provider store={store}>
-      <BrowserRouter history={history}>
+      <BrowserRouter history={history} basename="/ktc-lc">
         <Routes>
           {routeList.map((item) => {
             const { layout: Layout, routes = [], name } = item;

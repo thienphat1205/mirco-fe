@@ -18,10 +18,10 @@ const devConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "antd",
+      name: "ktc_lc",
       filename: "remoteEntry.js",
       exposes: {
-        "./AntdApp": "./src/bootstrap",
+        "./KtcLcApp": "./src/bootstrap",
       },
       shared: packageJson.dependencies,
     }),

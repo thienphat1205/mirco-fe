@@ -1,4 +1,4 @@
-import { mount } from "antd/AntdApp";
+import { mount } from "ktc_lc/KtcLcApp";
 import React, { useRef, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 

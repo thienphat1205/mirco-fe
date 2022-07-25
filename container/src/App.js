@@ -5,11 +5,7 @@ import {
   createGenerateClassName,
 } from "@material-ui/core/styles";
 
-const MarketingLazy = lazy(() => import("./components/MarketingApp"));
-const AuthLazy = lazy(() => import("./components/AuthApp"));
 const AntdApp = lazy(() => import("./components/AntdApp"));
-import Header from "./components/Header";
-import Progress from "./components/Progress";
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",
@@ -21,20 +17,12 @@ export default () => {
     <BrowserRouter>
       <StylesProvider generateClassName={generateClassName}>
         <div>
-          <Header
-            onSignOut={() => setIsSignedIn(false)}
-            isSignedIn={isSignedIn}
-          />
-          <Suspense fallback={<Progress />}>
+          <Suspense fallback={<div>Loading...</div>}>
             <Switch>
               <Route exact path="/">
-                <Redirect to="/marketing" />
+                <Redirect to="/ktc-lc" />
               </Route>
-              <Route path="/auth">
-                <AuthLazy onSignIn={() => setIsSignedIn(true)} />
-              </Route>
-              <Route path="/marketing" component={MarketingLazy} />
-              <Route path="/antd" component={AntdApp} />
+              <Route path="/ktc-lc" component={AntdApp} />
             </Switch>
           </Suspense>
         </div>

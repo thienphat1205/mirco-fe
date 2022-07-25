@@ -37,10 +37,10 @@ const MainLayout: React.FC = () => {
     const token = getLocalStorage("SESSION");
     if (token) {
       setIsReady(true);
-      getCurrentUser();
+      // getCurrentUser();
       getHubList();
     } else {
-      login();
+      // login();
     }
   }, []);
 

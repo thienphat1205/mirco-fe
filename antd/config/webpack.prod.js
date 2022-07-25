@@ -7,14 +7,14 @@ const prodConfig = {
   mode: "production",
   output: {
     filename: "[name].[contenthash].js",
-    publicPath: "/antd/latest/",
+    publicPath: "/ktc-lc/latest/",
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "antd",
+      name: "ktc_lc",
       filename: "remoteEntry.js",
       exposes: {
-        "./AntdApp": "./src/bootstrap",
+        "./Ktc-Lc-App": "./src/bootstrap",
       },
       shared: packageJson.dependencies,
     }),
