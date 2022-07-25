@@ -5,7 +5,7 @@ import {
   createGenerateClassName,
 } from "@material-ui/core/styles";
 
-const AntdApp = lazy(() => import("./components/AntdApp"));
+const KtcLcApp = lazy(() => import("./components/KtcLcApp"));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",
@@ -22,7 +22,7 @@ export default () => {
               <Route exact path="/">
                 <Redirect to="/ktc-lc" />
               </Route>
-              <Route path="/ktc-lc" component={AntdApp} />
+              <Route path="/ktc-lc" component={KtcLcApp} />
             </Switch>
           </Suspense>
         </div>
