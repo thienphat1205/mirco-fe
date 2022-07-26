@@ -1,0 +1,56 @@
+@import "../../variables.less";
+.root {
+  :global {
+    .ant-form-item-label > label {
+      color: @colorPlaceholder;
+      font-size: 11px;
+    }
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+    .ant-modal-body {
+      padding: 0;
+    }
+    .ant-modal-close {
+      top: -50px;
+      right: -20px;
+    }
+    .ant-modal-content {
+      border-radius: 12px;
+    }
+    .ant-modal-body {
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .ant-form-item-label
+      > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+      display: none;
+    }
+  }
+}
+
+.contentModal {
+  width: 100%;
+  height: fit-content;
+  .headerModal {
+    padding: 0.7rem;
+    font-weight: 500;
+    border-bottom: 1px solid #eee;
+    p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+  }
+  .viewFooter {
+    padding: 0.7rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  :global {
+    .ant-table-row {
+      cursor: pointer;
+    }
+  }
+}

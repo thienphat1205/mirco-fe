@@ -6,6 +6,7 @@ import {
 } from "@material-ui/core/styles";
 
 const KtcLcApp = lazy(() => import("./components/KtcLcApp"));
+const QlclApp = lazy(() => import("./components/QlclApp"));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",
@@ -23,6 +24,7 @@ export default () => {
                 <Redirect to="/ktc-lc" />
               </Route>
               <Route path="/ktc-lc" component={KtcLcApp} />
+              <Route path="/qlcl" component={QlclApp} />
             </Switch>
           </Suspense>
         </div>

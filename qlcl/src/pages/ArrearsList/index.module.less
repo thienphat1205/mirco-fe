@@ -1,0 +1,138 @@
+@import "../../variables.less";
+
+.root {
+  .titlePage {
+    text-transform: uppercase;
+    font-family: "Google Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 13px;
+  }
+  .textTime {
+    margin: 10px 0;
+  }
+  .textFilter {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .viewFiltered {
+    background-color: @primaryColor;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 3px 8px;
+    cursor: pointer;
+  }
+  .viewFilter {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 1rem;
+    margin: 12px 0;
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  .table {
+    width: 100%;
+    min-width: 1120px;
+    position: relative;
+    .viewHeaderTable {
+      color: @colorPlaceholder;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 44px;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .bodyTable {
+      padding: 44px 0 0px 0;
+    }
+    .viewFooterTable {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 55px;
+      box-shadow: 0px -1px 4px rgba(0, 0, 0, 0.1);
+      padding: 9px 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .footerLeft {
+        p {
+          margin: 0;
+        }
+        &__text {
+          color: @colorPlaceholder;
+          font-weight: 400;
+        }
+        &__number {
+          color: #072a52;
+          font-size: 24px;
+          font-weight: 400;
+        }
+      }
+      .footerRight {
+        display: flex;
+        button:not(:first-child) {
+          margin-left: 8px;
+        }
+        .btnRemove {
+          height: 32px;
+          width: 102px;
+          background-color: @colorPlaceholder;
+          color: @white;
+        }
+        .btnExplanation {
+          height: 32px;
+          width: 172px;
+          background-color: @secondaryColor;
+          color: @white;
+        }
+      }
+    }
+  }
+
+  .itemRow {
+    .viewCell {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 87px;
+      box-sizing: border-box;
+      padding: 13px 0;
+      p {
+        margin: 0;
+      }
+      .label {
+        color: @colorPlaceholder;
+        margin-right: 8px;
+        font-weight: 500;
+      }
+      .value {
+        color: @secondaryColor;
+        font-weight: 400;
+      }
+      .textHighlight {
+        color: @primaryColor;
+        font-weight: 400;
+      }
+      .btnView {
+        background: @secondaryColor;
+        color: @white;
+      }
+    }
+  }
+}
+
+.viewLoading {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
