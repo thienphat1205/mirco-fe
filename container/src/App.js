@@ -27,7 +27,7 @@ export default () => {
               <Route exact path="/">
                 <Redirect to="/ktc-lc" />
               </Route>
-              <Route path={["/ktc-lc"]}>
+              <Route path={["/ktc-lc", "/qlcl"]}>
                 <MainLayout>
                   <Switch>
                     <Route path="/ktc-lc" component={KtcLcApp} />
