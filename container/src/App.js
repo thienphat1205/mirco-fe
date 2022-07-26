@@ -10,7 +10,8 @@ import KtcLcApp from "./components/KtcLcApp";
 import MainLayout from "./components/MainLayout";
 import AuthorCode from "./pages/AuthorCode";
 import store from "./state/store";
-const KtcLcApp = lazy(() => import("./components/KtcLcApp"));
+import { lazy } from "react";
+const QlclApp = lazy(() => import("./components/QlclApp"));
 
 const generateClassName = createGenerateClassName({
   productionPrefix: "co",
