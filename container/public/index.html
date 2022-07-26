@@ -4,15 +4,35 @@
 <head>
   <meta charset="utf-8" />
   <link rel="icon" href="../public/logo512.png" />
-  <link rel="apple-touch-icon" href="../public/logo192.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Demo" />
-  <title>Demo</title>
+  <meta name="description" content="Giao hàng nhanh" />
+  <link rel="apple-touch-icon" href="../public/logo192.png" />
+  <link rel="manifest" href="../public/manifest.json" />
+  <title>Giao hàng nhanh</title>
 </head>
-
 <body>
   <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <div id="root">
+    <style>
+      html,
+      body,
+      #root {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      #root {
+        background-image: url('../public/home_bg.png');
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+      }
+    </style>
+    <div
+      style="height: 100vh; width: 100vw; overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; flex-direction: column">
+      <img src='../public/logo.svg' alt="logo" width="60%" height="auto">
+    </div>
+  </div>
 </body>
 
 </html>
