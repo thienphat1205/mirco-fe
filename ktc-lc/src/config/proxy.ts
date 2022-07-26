@@ -46,7 +46,7 @@ export const appKey: CommonType = {
 };
 
 export const myHost: CommonType = {
-  LOCAL: "http://localhost:3003",
+  LOCAL: "http://localhost:3000",
   STAGING: "https://nhanh.ghn.dev/ktc-lc",
   BETA: "https://nhanh.ghn.vn/ktc-lc",
   PRODUCTION: "https://nhanh.ghn.vn/ktc-lc",

@@ -24,7 +24,7 @@ export default () => {
         <StylesProvider generateClassName={generateClassName}>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-              <Route path={["/", "/ktc-lc"]}>
+              <Route exact path={["/", "/ktc-lc"]}>
                 <MainLayout>
                   <Switch>
                     <Route exact path="/">

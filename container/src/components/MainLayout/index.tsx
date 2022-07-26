@@ -5,12 +5,16 @@ import { useEffect } from "react";
 import Authorized from "../Authorized";
 import ComponentHeader from "../Header";
 
+// import { createBrowserHistory } from "history";
+// const history = createBrowserHistory();
+
 const MainLayout: React.FC<{
   children: any;
 }> = ({ children }) => {
   const { getCurrentUser, getHubList } = useActions();
 
   useEffect(() => {
+    // alert(JSON.stringify(history));
     const token = getLocalStorage("SESSION");
     if (token) {
       getCurrentUser();
