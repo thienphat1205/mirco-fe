@@ -6,8 +6,6 @@ import { getEnv } from "@/utils/utils";
 
 const ENV = getEnv();
 
-console.log("ENV", ENV);
-
 // Mount function to start up the app
 const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
   const history =
@@ -20,7 +18,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App history={history} />, el);
+  ReactDOM.render(<App />, el);
   return {
     onParentNavigate: ({ pathname: nextPathname }) => {
       // nextPathname from location
