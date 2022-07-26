@@ -1,0 +1,37 @@
+@import "../../variables.less";
+
+.root {
+  .btnUpload {
+    width: 97%;
+    height: 51px;
+    border: 1px dashed rgba(0, 0, 0, 0.38);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #575757;
+    span {
+      font-family: "Google Sans Medium";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+    }
+    &:hover {
+      border-color: @primaryColor;
+      color: @primaryColor;
+    }
+    .icon {
+      margin-right: 8px;
+    }
+  }
+  :global {
+    .ant-upload {
+      width: 100%;
+      cursor: pointer;
+    }
+    .ant-upload-disabled {
+      opacity: 0.8;
+      pointer-events: none;
+    }
+  }
+}

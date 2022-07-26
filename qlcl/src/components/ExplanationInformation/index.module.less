@@ -1,0 +1,153 @@
+@import "../../variables.less";
+
+.root {
+  .viewContent {
+    padding-left: 1rem;
+    margin-top: 12px;
+  }
+}
+
+.itemCanNotEdit {
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  .viewHubInfo {
+    display: flex;
+    justify-content: space-between;
+    .textHubInfo {
+      font-size: 14px;
+      margin: 0;
+    }
+    .viewCheckbox {
+      display: flex;
+      align-items: center;
+      .textCheckbox {
+        font-weight: 500;
+        font-size: 11px;
+        color: @colorPlaceholder;
+        margin-right: 7px;
+      }
+    }
+  }
+  .textLabel {
+    color: @colorPlaceholder;
+    font-weight: 500;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+  .textValue {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .viewItemAttachment {
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    .textFileName {
+      font-size: 14px;
+      margin-right: 20px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 60%;
+    }
+  }
+
+  .textValuePics {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .viewPersonList {
+    display: flex;
+    margin: 0 !important;
+    .itemPerson {
+      background-color: @secondaryColor;
+      border-radius: 10px;
+      padding: 1px 8px;
+      color: #fff;
+      margin-right: 8px;
+    }
+  }
+}
+
+.itemCanEdit {
+  background: #ffffff;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  .viewHubInfo {
+    display: flex;
+    justify-content: space-between;
+    .textHubInfo {
+      font-size: 14px;
+      margin: 0;
+    }
+    .viewCheckbox {
+      display: flex;
+      align-items: center;
+      .textCheckbox {
+        font-weight: 500;
+        font-size: 11px;
+        color: @colorPlaceholder;
+        margin-right: 7px;
+      }
+    }
+  }
+  .textLabel {
+    color: @colorPlaceholder;
+    font-weight: 500;
+    font-size: 11px;
+    margin-bottom: 2px;
+  }
+  .textValue {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .textValuePics {
+    width: 100%;
+    font-size: 14px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .textArea {
+    border-radius: 10px;
+    font-size: 14px;
+    border: none;
+    background: #fafafa;
+    resize: none;
+    &:focus {
+      box-shadow: none;
+    }
+  }
+  :global {
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      border-radius: 10px;
+      width: 100%;
+      height: fit-content;
+      padding: 3px;
+      min-height: 40px;
+      border: none;
+      background-color: #fafafa;
+      box-shadow: none !important;
+    }
+    .ant-select {
+      width: 100%;
+    }
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+}

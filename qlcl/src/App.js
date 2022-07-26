@@ -10,7 +10,7 @@ import store from "./state/store";
 const App = () => {
   return (
     <Provider store={store}>
-      <BrowserRouter basename="/ktc-lc">
+      <BrowserRouter basename="/qlcl">
         <Routes>
           {routeList.map((item) => {
             const { layout: Layout, routes = [], name } = item;

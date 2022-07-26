@@ -1,0 +1,80 @@
+@import "../../variables.less";
+
+.formFilter {
+  width: 282px;
+  height: fit-content;
+  min-height: 273px;
+  background: #ffffff;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  .viewForm {
+    .viewButton {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      button:not(:first-child) {
+        margin-left: 8px;
+      }
+      .btnCancel {
+        height: 32px;
+        width: 94px;
+        background-color: @colorPlaceholder;
+        color: @white;
+      }
+      .btnSubmit {
+        height: 32px;
+        width: 103px;
+        background-color: @secondaryColor;
+        color: @white;
+      }
+    }
+    :global {
+      .ant-form-item-label > label {
+        color: @colorPlaceholder;
+        font-size: 13px;
+      }
+      .ant-input {
+        border-radius: 10px;
+        height: 38px;
+        border: none;
+        background-color: #fafafa;
+        box-shadow: none !important;
+      }
+      .ant-form-item {
+        margin-bottom: 0;
+      }
+      .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        border-radius: 10px;
+        height: fit-content;
+        min-height: 38px;
+        padding: 3px 10px;
+        width: 100%;
+        border: none;
+        background-color: #fafafa;
+        box-shadow: none !important;
+      }
+      .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+      .ant-select-single.ant-select-show-arrow
+        .ant-select-selection-placeholder {
+        margin-top: 2px;
+      }
+      .ant-select-arrow {
+        color: @secondaryColor;
+      }
+      .ant-picker {
+        width: 100%;
+        border-radius: 10px;
+        min-height: 38px;
+        border: none;
+        background: #fafafa !important;
+        box-shadow: none !important;
+      }
+      .ant-select:not(.ant-select-customize-input)
+        .ant-select-selector
+        .ant-select-selection-search-input {
+        margin-top: 5px;
+      }
+    }
+  }
+}
