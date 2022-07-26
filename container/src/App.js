@@ -24,12 +24,12 @@ export default () => {
         <StylesProvider generateClassName={generateClassName}>
           <Suspense fallback={<div>Loading...</div>}>
             <Switch>
-              <Route exact path={["/", "/ktc-lc"]}>
+              <Route exact path="/">
+                <Redirect to="/ktc-lc" />
+              </Route>
+              <Route path={["/ktc-lc"]}>
                 <MainLayout>
                   <Switch>
-                    <Route exact path="/">
-                      <Redirect to="/ktc-lc" />
-                    </Route>
                     <Route path="/ktc-lc" component={KtcLcApp} />
                     <Route path="/qlcl" component={QlclApp} />
                   </Switch>
