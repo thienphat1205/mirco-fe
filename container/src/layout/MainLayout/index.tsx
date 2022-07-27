@@ -26,7 +26,6 @@ const MainLayout: React.FC<{}> = () => {
   useEffect(() => {
     const token = getLocalStorage("SESSION");
     if (token) {
-      console.log({ token });
       getCurrentUser();
       getHubList();
     } else {

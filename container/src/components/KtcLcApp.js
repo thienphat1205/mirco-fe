@@ -1,8 +1,9 @@
 import { mount } from "ktc_lc/KtcLcApp";
-import React, { useRef, useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default () => {
+export default (props) => {
+  const { store } = props;
   const ref = useRef(null);
 
   const location = useLocation();
@@ -19,6 +20,7 @@ export default () => {
           navigate(nextPathname);
         }
       },
+      store,
     });
 
     onParentNavigate(location);

@@ -7,6 +7,13 @@ const rootReducer = combineReducers({
   metaData: metaDataReducer,
 });
 
+export function createReducer(asyncReducers: any) {
+  return combineReducers({
+    user: userReducer,
+    metaData: metaDataReducer,
+    ...asyncReducers,
+  });
+}
 export default rootReducer;
 
 export type RootState = ReturnType<typeof rootReducer>;

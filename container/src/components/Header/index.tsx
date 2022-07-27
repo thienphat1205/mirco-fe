@@ -3,12 +3,14 @@ import iconClose from "@/assets/images/SelectAppClose.png";
 import iconOpen from "@/assets/images/SelectAppOpen.png";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { logout } from "@/services/auth";
+import { updateCollapseHeader } from "@/state/reducers/commonReducer";
 import { getLocalStorage, setLocalStorage } from "@/utils/utils";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar, Dropdown, Layout, Select } from "antd";
 import React, { useCallback, useState } from "react";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { FaChevronDown, FaSignOutAlt } from "react-icons/fa";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ViewSelectApp from "../ViewSelectApp";
 import styles from "./index.module.less";
@@ -17,13 +19,12 @@ const { Header } = Layout;
 const { Option } = Select;
 
 const ComponentHeader: React.FC<{
-  onCollapse?: () => void;
-  collapsed?: boolean;
   hubList?: { hubId: string; hubName: string }[];
-}> = ({ /*  onCollapse, collapsed*/ hubList }) => {
+}> = ({ hubList }) => {
   const { currentUser: { userInfo = {} } = {} } = useTypedSelector(
     (state: { user: any }) => state.user
   );
+  const { collapse } = useTypedSelector((state) => state.commonReducer);
 
   const { ssoId = "", profile: { fullname = "" } = {} } = userInfo;
 
@@ -56,19 +57,24 @@ const ComponentHeader: React.FC<{
 
   const currentHub = getLocalStorage("CURRENT_HUB");
 
+  const dispatch = useDispatch();
+
+  const handleCollapse = () => {
+    dispatch(updateCollapseHeader(!collapse));
+  };
 
   return (
     <>
       <Header className={styles.header}>
         <div className={styles.viewLogo}>
-          {true ? (
+          {collapse ? (
             <AiOutlineMenuUnfold
-              // onClick={handleCollapse}
+              onClick={handleCollapse}
               className={styles.iconMenu}
             />
           ) : (
             <AiOutlineMenuFold
-              // onClick={handleCollapse}
+              onClick={handleCollapse}
               className={styles.iconMenu}
             />
           )}

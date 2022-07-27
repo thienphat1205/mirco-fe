@@ -29,7 +29,10 @@ const MainLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState<boolean>(
     !!getLocalStorage("collapse")
   );
+
+  const { collapse } = useTypedSelector((state) => state.commonReducer);
   const { width } = useWindowDimensions();
+
 
   const isMobile = width < 768;
 
@@ -44,6 +47,7 @@ const MainLayout: React.FC = () => {
   //   }
   // }, []);
 
+
   useEffect(() => {
     if (isMobile) {
       setCollapsed(true);
@@ -51,8 +55,6 @@ const MainLayout: React.FC = () => {
       setCollapsed(false);
     }
   }, [isMobile]);
-
-  console.log("ktc-lc", { collapsed });
 
   const handleCollapsedMenu = React.useCallback(() => {
     setCollapsed(!collapsed);
@@ -77,7 +79,7 @@ const MainLayout: React.FC = () => {
         /> */}
         <Layout className={styles.layoutHasSider}>
           <SiderMenu
-            collapsed={collapsed}
+            collapsed={collapse}
             isMobile={isMobile}
             onCollapse={handleCollapsedMenu}
           />

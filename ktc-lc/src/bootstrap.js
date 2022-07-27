@@ -6,18 +6,18 @@ import App from "./App";
 const ENV = getEnv();
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath, store }) => {
   const history =
     defaultHistory ||
     createMemoryHistory({
       initialEntries: [initialPath],
     });
-
+    
   if (onNavigate) {
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App />, el);
+  ReactDOM.render(<App store={store} />, el);
   return {
     onParentNavigate: ({ pathname: nextPathname }) => {
       // nextPathname from location

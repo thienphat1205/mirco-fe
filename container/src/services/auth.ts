@@ -18,7 +18,6 @@ export const logout = () => {
 };
 
 export const login = () => {
-  console.log("login ne");
   const urlLogout = `${AUTH}/login/?app_key=${AUTH_APP_KEY}&redirect_uri=${MY_HOST}/sso-login-v2?authorcode=`;
   window.location.href = urlLogout;
 };

@@ -1,52 +1,65 @@
-import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
-import { Suspense } from "react";
-import "./App.less";
 import PageLoading from "@/components/PageLoading";
-import { Helmet } from "react-helmet";
 import routeList from "@/config/routes";
+import { Suspense, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Provider } from "react-redux";
-import store from "./state/store";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import "./App.less";
+import reducer from "./state/reducer";
+import { store as RelatedStore } from "./state/store";
 
-const App = () => {
+const App = (props) => {
+  const { store = RelatedStore } = props;
+
+  useEffect(() => {
+    store.injectReducer("relatedReducer", reducer);
+  }, []);
+
   return (
-    <Provider store={store}>
-      <BrowserRouter basename="/ktc-lc">
-        <Routes>
-          {routeList.map((item) => {
-            const { layout: Layout, routes = [], name } = item;
-            return (
-              <Route element={<Layout />} key={name}>
-                {routes.map((route) => {
-                  const { title, path, component: Component, redirect } = route;
-                  if (redirect)
-                    return (
-                      <Route
-                        key={title}
-                        path={path}
-                        element={<Navigate to={redirect} />}
-                      />
-                    );
+    <Provider store={store || {}}>
+      <Main />
+    </Provider>
+  );
+};
+
+const Main = () => {
+  return (
+    <BrowserRouter basename="/ktc-lc">
+      <Routes>
+        {routeList.map((item) => {
+          const { layout: Layout, routes = [], name } = item;
+          return (
+            <Route element={<Layout />} key={name}>
+              {routes.map((route) => {
+                const { title, path, component: Component, redirect } = route;
+                if (redirect)
                   return (
                     <Route
                       key={title}
                       path={path}
-                      element={
-                        <Suspense fallback={<PageLoading />}>
-                          <Helmet>
-                            <title>{title}</title>
-                          </Helmet>
-                          <Component />
-                        </Suspense>
-                      }
+                      element={<Navigate to={redirect} />}
                     />
                   );
-                })}
-              </Route>
-            );
-          })}
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+                return (
+                  <Route
+                    key={title}
+                    path={path}
+                    element={
+                      <Suspense fallback={<PageLoading />}>
+                        <Helmet>
+                          <title>{title}</title>
+                        </Helmet>
+                        <Component />
+                      </Suspense>
+                    }
+                  />
+                );
+              })}
+            </Route>
+          );
+        })}
+      </Routes>
+    </BrowserRouter>
   );
 };
 
