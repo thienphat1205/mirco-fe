@@ -84,7 +84,8 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen, onClose }) => {
     // if (prevPathAppSelected) {
     //   href = `${link}${prevPathAppSelected}`;
     // }
-    navigate(link);
+    // navigate(link);
+    window.location.href = link;
     onClose();
   };
 
