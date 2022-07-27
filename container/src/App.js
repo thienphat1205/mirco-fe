@@ -44,14 +44,7 @@ export default () => {
                 </Suspense>
               }
             />
-            <Route
-              path="*"
-              element={
-                <Suspense fallback={<div>Loading...</div>}>
-                  <NotFound />
-                </Suspense>
-              }
-            />
+            <Route path="*" element={<Navigate to="/ktc-lc" />} />
           </Route>
         </Routes>
       </BrowserRouter>

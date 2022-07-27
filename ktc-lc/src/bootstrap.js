@@ -14,13 +14,16 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
       initialEntries: [initialPath],
     });
 
+  console.log("history KTC-LC", history);
+
   if (onNavigate) {
     history.listen(onNavigate);
   }
 
-  ReactDOM.render(<App />, el);
+  ReactDOM.render(<App history={history} />, el);
   return {
     onParentNavigate: ({ pathname: nextPathname }) => {
+      // history.push(nextPathname);
       // nextPathname from location
       const { pathname } = history.location;
       if (nextPathname !== pathname) {
