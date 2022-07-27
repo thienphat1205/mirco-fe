@@ -5,13 +5,9 @@ import { login } from "@/services/auth";
 import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 import PageLoading from "@/components/PageLoading";
-import Card from "@/components/Card";
-import Authorized from "@/components/Authorized";
-import styles from "./index.module.less";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
-const SiderMenu = lazy(() => import("@/components/SiderMenu"));
 const Header = lazy(() => import("@/components/Header"));
 
 const { Content } = Layout;
@@ -37,10 +33,10 @@ const MainLayout: React.FC = () => {
     const token = getLocalStorage("SESSION");
     if (token) {
       setIsReady(true);
-      // getCurrentUser();
+      getCurrentUser();
       getHubList();
     } else {
-      // login();
+      login();
     }
   }, []);
 
@@ -56,29 +52,23 @@ const MainLayout: React.FC = () => {
     setCollapsed(!collapsed);
   }, [collapsed]);
 
-  // if (
-  //   !isReady ||
-  //   loadingGetCurrentUser ||
-  //   loading ||
-  //   loadingGetPermissions ||
-  //   loadingGetHubList
-  // )
-  //   return <PageLoading />;
+  if (
+    !isReady ||
+    loadingGetCurrentUser ||
+    loading ||
+    loadingGetPermissions ||
+    loadingGetHubList
+  )
+    return <PageLoading />;
 
   return (
     <Suspense fallback={<PageLoading />}>
-      <Layout className={styles.root}>
-        <Header
-          onCollapse={handleCollapsedMenu}
-          collapsed={collapsed}
-          hubList={hubList}
-        />
-        <Layout>
-          <Content>
-            <Outlet />
-          </Content>
-        </Layout>
-      </Layout>
+      <Header
+        onCollapse={handleCollapsedMenu}
+        collapsed={collapsed}
+        hubList={hubList}
+      />
+      <Outlet />
     </Suspense>
   );
 };
