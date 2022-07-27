@@ -1,17 +1,17 @@
 import logo from "@/assets/images/logo.svg";
-import { Avatar, Dropdown, Layout, Select } from "antd";
-import React, { useCallback, useState } from "react";
-import styles from "./index.module.less";
-import { logout } from "@/services/auth";
-import { FaChevronDown, FaSignOutAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
 import iconClose from "@/assets/images/SelectAppClose.png";
 import iconOpen from "@/assets/images/SelectAppOpen.png";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { logout } from "@/services/auth";
 import { getLocalStorage, setLocalStorage } from "@/utils/utils";
 import { UserOutlined } from "@ant-design/icons";
+import { Avatar, Dropdown, Layout, Select } from "antd";
+import React, { useCallback, useState } from "react";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
-import { useTypedSelector } from "@/hooks/useTypedSelector";
+import { FaChevronDown, FaSignOutAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import ViewSelectApp from "../ViewSelectApp";
+import styles from "./index.module.less";
 
 const { Header } = Layout;
 const { Option } = Select;
@@ -20,11 +20,7 @@ const ComponentHeader: React.FC<{
   onCollapse?: () => void;
   collapsed?: boolean;
   hubList?: { hubId: string; hubName: string }[];
-}> = (
-  {
-    /*  onCollapse, collapsed*/hubList 
-  }
-) => {
+}> = ({ /*  onCollapse, collapsed*/ hubList }) => {
   const { currentUser: { userInfo = {} } = {} } = useTypedSelector(
     (state: { user: any }) => state.user
   );
@@ -60,18 +56,19 @@ const ComponentHeader: React.FC<{
 
   const currentHub = getLocalStorage("CURRENT_HUB");
 
+
   return (
     <>
       <Header className={styles.header}>
         <div className={styles.viewLogo}>
           {true ? (
             <AiOutlineMenuUnfold
-              // onClick={onCollapse}
+              // onClick={handleCollapse}
               className={styles.iconMenu}
             />
           ) : (
             <AiOutlineMenuFold
-              // onClick={onCollapse}
+              // onClick={handleCollapse}
               className={styles.iconMenu}
             />
           )}

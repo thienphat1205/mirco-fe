@@ -1,79 +1,71 @@
-import KtcLcApp from "@/components/KtcLcApp";
-import MainLayout from "@/components/MainLayout";
-import AuthorCode from "@/pages/AuthorCode";
-import React, { lazy, ReactElement } from "react";
+import { lazy, ReactElement } from "react";
 import { FaClone } from "react-icons/fa";
-// import KtcLcApp from "../KtcLcApp";
-// import MainLayout from "@/layouts/MainLayout";
-// import AuthorCodeLayout from "@/layouts/AuthorCodeLayout";
-// import { FaClone, FaListAlt, FaQrcode, FaBullhorn } from "react-icons/fa";
-// const Home = lazy(() => import("@/pages/Home"));
-// const AuthorCode = lazy(() => import("@/pages/AuthorCode"));
-// const NotFound = lazy(() => import("@/pages/NotFound"));
-// const ConfigWarehouseLayout = lazy(
-//   () => import("@/pages/ConfigWarehouseLayout")
-// );
-// const WarehouseLayoutDetail = lazy(
-//   () => import("@/pages/WarehouseLayoutDetail")
-// );
-// const CheckIn = lazy(() => import("@/pages/CheckIn"));
-// const CreateNewLayout = lazy(() => import("@/pages/CreateNewLayout"));
-// const CreateNewArea = lazy(() => import("@/pages/CreateNewArea"));
-// const EmployeeQR = lazy(() => import("@/pages/EmployeeQR"));
-// const ConfigSound = lazy(() => import("@/pages/ConfigSound"));
+const AuthorCodeLayout = lazy(() => import("@/layout/AuthorCodeLayout"));
+const KtcLcApp = lazy(() => import("@/components/KtcLcApp"));
+const MainLayout = lazy(() => import("@/layout/MainLayout"));
+const QlclApp = lazy(() => import("@/components/QlclApp"));
+const AuthorCode = lazy(() => import("@/pages/AuthorCode"));
 
 export interface RouteType {
   path: string;
   title: string;
   key: string;
-
   icon?: ReactElement;
-
   hideInMenu?: boolean;
-
   component: any;
-
   redirect?: string;
-
   permission?: string;
+  exact?: boolean;
 }
 
 export interface LayoutType {
-  layout?: React.FC<{}>;
+  // layout?: React.FC<{}>;
+  layout?: any;
   name: string;
+  key: string;
   routes: RouteType[];
 }
 
 const routeList: LayoutType[] = [
   {
     name: "AuthorCodeLayout",
+    layout: <AuthorCodeLayout />,
+    key: "AuthorCodeLayout",
     routes: [
       {
         title: "Verify code",
         path: "/sso-login-v2",
         key: "AuthorCode",
-        component: AuthorCode,
+        component: <AuthorCode />,
       },
     ],
   },
   {
     name: "MainLayout",
+    layout: <MainLayout />,
+    key: "MainLayout",
     routes: [
       {
         title: "Giao hàng nhanh",
         path: "/",
-        key: "ktc-lc",
+        key: "home",
         redirect: "/ktc-lc",
-        component: KtcLcApp,
-        hideInMenu: true,
+        exact: true,
+        component: <KtcLcApp />,
       },
-      // {
-      //   title: "Thiết lập khu vực kho",
-      //   path: "/config-layout",
-      //   key: "config-layout",
-      //   icon: <FaClone />,
-      //   component: ConfigWarehouseLayout,
-      // },
+      {
+        title: "Giao hàng nhanh",
+        path: "/ktc-lc/*",
+        key: "ktc-lc",
+        component: <KtcLcApp />,
+      },
+      {
+        title: "Quản lý chất lượng",
+        path: "/qlcl/*",
+        key: "qlcl",
+        icon: <FaClone />,
+        component: <QlclApp />,
+      },
     ],
   },
 ];

@@ -1,18 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { lazy, Suspense, useEffect, useState } from "react";
 import { getLocalStorage } from "@/utils/utils";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 // import { login } from "@/services/auth";
-import { Outlet } from "react-router-dom";
-import { Layout } from "antd";
-import PageLoading from "@/components/PageLoading";
 import Card from "@/components/Card";
-import Authorized from "@/components/Authorized";
-import styles from "./index.module.less";
-import { useActions } from "@/hooks/useActions";
+import PageLoading from "@/components/PageLoading";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
-import { getCurrentUser, getHubList } from "@/state/actionCreators/user";
-import { login } from "@/services/auth";
+import { Layout } from "antd";
+import { Outlet } from "react-router-dom";
+import styles from "./index.module.less";
 const SiderMenu = lazy(() => import("@/components/SiderMenu"));
 const Header = lazy(() => import("@/components/Header"));
 
@@ -30,7 +26,9 @@ const MainLayout: React.FC = () => {
     hubList,
   } = useTypedSelector((state) => state.user);
   const [isReady, setIsReady] = useState<boolean>(false);
-  const [collapsed, setCollapsed] = useState<boolean>(false);
+  const [collapsed, setCollapsed] = useState<boolean>(
+    !!getLocalStorage("collapse")
+  );
   const { width } = useWindowDimensions();
 
   const isMobile = width < 768;
@@ -53,6 +51,8 @@ const MainLayout: React.FC = () => {
       setCollapsed(false);
     }
   }, [isMobile]);
+
+  console.log("ktc-lc", { collapsed });
 
   const handleCollapsedMenu = React.useCallback(() => {
     setCollapsed(!collapsed);
@@ -84,7 +84,7 @@ const MainLayout: React.FC = () => {
           <Content>
             <Card>
               {/* <Authorized> */}
-                <Outlet />
+              <Outlet />
               {/* </Authorized> */}
             </Card>
           </Content>

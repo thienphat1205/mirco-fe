@@ -3,8 +3,8 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { login } from "@/services/auth";
 import { getLocalStorage } from "@/utils/utils";
 import { useEffect } from "react";
-import Authorized from "../Authorized";
-import ComponentHeader from "../Header";
+import Authorized from "../../components/Authorized";
+import ComponentHeader from "../../components/Header";
 
 import { createBrowserHistory } from "history";
 import { Outlet } from "react-router-dom";
