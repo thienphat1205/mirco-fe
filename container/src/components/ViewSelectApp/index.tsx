@@ -5,12 +5,16 @@ import { Row, Col } from "antd";
 import { CSSTransition } from "react-transition-group";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { setPreviousUrl, getPreviousURL, getEnv, appList } from "@/utils/utils";
+import { useNavigate } from "react-router-dom";
 
 interface ViewProps {
   isOpen: boolean;
+
+  onClose: () => void;
 }
 
-const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
+const ViewSelectApp: React.FC<ViewProps> = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const { allowedAppList } = useTypedSelector((state) => state.user);
 
   const [appDataDisplay, setAppDataDisplay] = useState<any[]>([]);
@@ -44,10 +48,10 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
   const genListApp = (list: any): JSX.Element => {
     return (
       <>
-        {list.map((app: any) => {
+        {list.map((app: any, idx: number) => {
           const { name, className, key } = app;
           return (
-            <Col md={6} sm={12} xs={24} key={key}>
+            <Col md={6} sm={12} xs={24} key={idx}>
               <div
                 className={`${styles.itemApp} ${styles[className]}`}
                 onClick={() => openNewPage(app)}
@@ -64,23 +68,24 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
   };
 
   const openNewPage = (appSelected: any) => {
-    const { pathname, search } = window.location;
+    // const { pathname, search } = window.location;
     const { link, key } = appSelected;
-    const prevUrl = getPreviousURL();
-    const pathReplace = pathname
-      .replace("/ktc-lc/", "/")
-      .replace("/ktc-lc", "/");
-    const newObjUrl = {
-      ...prevUrl,
-      ktc_lc: !search ? pathReplace : `${pathReplace}${search}`,
-    };
-    setPreviousUrl(newObjUrl);
-    const prevPathAppSelected = prevUrl[key];
-    let href = link;
-    if (prevPathAppSelected) {
-      href = `${link}${prevPathAppSelected}`;
-    }
-    window.location.href = href;
+    // const prevUrl = getPreviousURL();
+    // const pathReplace = pathname
+    //   .replace("/ktc-lc/", "/")
+    //   .replace("/ktc-lc", "/");
+    // const newObjUrl = {
+    //   ...prevUrl,
+    //   ktc_lc: !search ? pathReplace : `${pathReplace}${search}`,
+    // };
+    // setPreviousUrl(newObjUrl);
+    // const prevPathAppSelected = prevUrl[key];
+    // let href = link;
+    // if (prevPathAppSelected) {
+    //   href = `${link}${prevPathAppSelected}`;
+    // }
+    navigate(link);
+    onClose();
   };
 
   return (

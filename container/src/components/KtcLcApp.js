@@ -20,7 +20,6 @@ export default () => {
         }
       },
     });
-
     onParentNavigate(location);
   }, [location]);
 

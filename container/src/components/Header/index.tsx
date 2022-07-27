@@ -75,7 +75,7 @@ const ComponentHeader: React.FC<{
           <Link to="/">
             <img className={styles.logo} src={logo} alt="logo" />
           </Link>
-          <span style={{ textTransform: "uppercase" }}>KTC & LC</span>
+          <span style={{ textTransform: "uppercase" }}>Demo Micro FE</span>
         </div>
         <div className={styles.contentRight}>
           <Select
@@ -108,7 +108,10 @@ const ComponentHeader: React.FC<{
           />
         </div>
       </Header>
-      <ViewSelectApp isOpen={openViewSelectApp} />
+      <ViewSelectApp
+        isOpen={openViewSelectApp}
+        onClose={() => setOpenViewSelectApp(false)}
+      />
     </>
   );
 };

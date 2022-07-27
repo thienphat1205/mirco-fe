@@ -68,7 +68,7 @@ const MainLayout: React.FC = () => {
   return (
     <Suspense fallback={<PageLoading />}>
       <Layout className={styles.root}>
-        <Header onCollapse={handleCollapsedMenu} collapsed={collapsed} />
+        {/* <Header onCollapse={handleCollapsedMenu} collapsed={collapsed} /> */}
         <Layout className={styles.layoutHasSider}>
           <SiderMenu
             collapsed={collapsed}
