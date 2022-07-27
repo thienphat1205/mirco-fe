@@ -6,12 +6,11 @@ import { useEffect } from "react";
 import Authorized from "../Authorized";
 import ComponentHeader from "../Header";
 
-// import { createBrowserHistory } from "history";
-// const history = createBrowserHistory();
+import { createBrowserHistory } from "history";
+import { Outlet } from "react-router-dom";
+const history = createBrowserHistory();
 
-const MainLayout: React.FC<{
-  children: any;
-}> = ({ children }) => {
+const MainLayout: React.FC<{}> = () => {
   const { getCurrentUser, getHubList } = useActions();
 
   const {
@@ -38,7 +37,9 @@ const MainLayout: React.FC<{
   return (
     <div>
       <ComponentHeader hubList={hubList} />
-      <Authorized>{children}</Authorized>
+      <Authorized>
+        <Outlet />
+      </Authorized>
     </div>
   );
 };

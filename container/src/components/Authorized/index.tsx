@@ -1,16 +1,16 @@
-import React from "react";
-import { Result, Button } from "antd";
-import { checkPermission } from "@/utils/utils";
 import { useGetCurrentPath } from "@/hooks/useGetCurrentPath";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
-import { useHistory } from "react-router-dom";
+import { checkPermission } from "@/utils/utils";
+import { Button, Result } from "antd";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Authorized: React.FC<{ children: any }> = ({ children }) => {
   const { permissions = [] } = useTypedSelector((state) => state.user);
   const { currentPath } = useGetCurrentPath("MainLayout");
-  const history = useHistory();
+  const navigate = useNavigate();
   const handleClick = () => {
-    history.push("/");
+    navigate("/");
   };
   return (
     <>

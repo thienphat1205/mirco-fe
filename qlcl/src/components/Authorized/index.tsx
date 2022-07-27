@@ -5,7 +5,7 @@ import { useGetCurrentPath } from "@/hooks/useGetCurrentPath";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { useNavigate } from "react-router-dom";
 
-const Authorized: React.FC = ({ children }) => {
+const Authorized: React.FC<{ children: any }> = ({ children }) => {
   const { permissions = [] } = useTypedSelector((state) => state.user);
   const { currentPath } = useGetCurrentPath("MainLayout");
   let navigate = useNavigate();

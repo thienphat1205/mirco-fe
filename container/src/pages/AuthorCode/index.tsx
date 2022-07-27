@@ -1,15 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
-import { Spin } from "antd";
 import logo from "@/assets/images/logo.svg";
-import { useHistory } from "react-router-dom";
-import s from "./index.module.less";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { getParamUrl } from "@/utils/utils";
+import { Spin } from "antd";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import s from "./index.module.less";
 
 const AuthorCode: React.FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { loading: { loadingVerify = false } = {} } = useTypedSelector(
     (state) => state.user
   );
@@ -22,7 +22,7 @@ const AuthorCode: React.FC = () => {
     }
   }, []);
 
-  const handleNavigateToHomePage = (): void => history.push("/");
+  const handleNavigateToHomePage = (): void => navigate("/");
 
   return (
     <div className={s.root}>

@@ -33,7 +33,6 @@ const ComponentHeader: React.FC<{
 
   const [openViewSelectApp, setOpenViewSelectApp] = useState<boolean>(false);
 
-
   const handleOpenModal = useCallback(() => {
     setOpenViewSelectApp((prevState) => !prevState);
   }, []);

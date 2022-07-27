@@ -16,6 +16,7 @@ const prodConfig = {
       name: "container",
       remotes: {
         ktc_lc: `ktc_lc@${domain}/ktc-lc/latest/remoteEntry.js`,
+        qlcl: `qlcl@${domain}/ktc-lc/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),

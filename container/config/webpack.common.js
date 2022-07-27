@@ -95,7 +95,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './public/index.html',
+      template: "./public/index.html",
     }),
     new webpack.HotModuleReplacementPlugin(), // Tell webpack we want hot reloading
     new webpack.ProvidePlugin({

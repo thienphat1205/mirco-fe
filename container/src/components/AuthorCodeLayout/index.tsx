@@ -1,9 +1,8 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 
-const ComponentHeader: React.FC<{
-  children: any;
-}> = ({ children }) => {
-  return children;
+const AuthorCodeLayout: React.FC = () => {
+  return <Outlet />;
 };
 
-export default ComponentHeader;
+export default AuthorCodeLayout;
