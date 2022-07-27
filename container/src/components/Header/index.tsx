@@ -1,6 +1,6 @@
 import logo from "@/assets/images/logo.svg";
 import { Avatar, Dropdown, Layout, Select } from "antd";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import styles from "./index.module.less";
 import { logout } from "@/services/auth";
 import { FaChevronDown, FaSignOutAlt } from "react-icons/fa";
@@ -10,6 +10,8 @@ import iconOpen from "@/assets/images/SelectAppOpen.png";
 import { getLocalStorage, setLocalStorage } from "@/utils/utils";
 import { UserOutlined } from "@ant-design/icons";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import ViewSelectApp from "../ViewSelectApp";
 
 const { Header } = Layout;
 const { Option } = Select;
@@ -20,21 +22,28 @@ const ComponentHeader: React.FC<{
   hubList?: { hubId: string; hubName: string }[];
 }> = (
   {
-    /*  onCollapse, collapsed, hubList */
+    /*  onCollapse, collapsed*/hubList 
   }
 ) => {
-  // const { currentUser: { userInfo = {} } = {} } = useTypedSelector(
-  //   (state: { user: any; }) => state.user
-  // );
+  const { currentUser: { userInfo = {} } = {} } = useTypedSelector(
+    (state: { user: any }) => state.user
+  );
 
-  // const { ssoId = "", profile: { fullname = "" } = {} } = userInfo;
+  const { ssoId = "", profile: { fullname = "" } = {} } = userInfo;
+
+  const [openViewSelectApp, setOpenViewSelectApp] = useState<boolean>(false);
+
+
+  const handleOpenModal = useCallback(() => {
+    setOpenViewSelectApp((prevState) => !prevState);
+  }, []);
 
   const genViewLogout = (
     <div className={styles.contentDropdown}>
       <div className={styles.viewInfo}>
         <Avatar size={56} icon={<UserOutlined />} />
-        <p className={styles.textName}>{`${"ssoId"} - ${
-          "fullname" || "User name"
+        <p className={styles.textName}>{`${ssoId} - ${
+          fullname || "User name"
         }`}</p>
         <p className={styles.textTitle}>Sorting Supervisor</p>
       </div>
@@ -84,11 +93,11 @@ const ComponentHeader: React.FC<{
             }}
             onChange={handleSelectHub}
           >
-            {/* {hubList.map((hubInfo: any) => (
+            {hubList?.map((hubInfo: any) => (
               <Option value={hubInfo?.hubId} key={hubInfo?.hubId}>
                 {hubInfo?.hubName}
               </Option>
-            ))} */}
+            ))}
           </Select>
           <Dropdown overlay={genViewLogout} placement="bottom">
             <Avatar
@@ -100,11 +109,11 @@ const ComponentHeader: React.FC<{
           <img
             src={!false ? iconClose : iconOpen}
             alt="toggle"
-            // onClick={handleOpenModal}
+            onClick={handleOpenModal}
           />
         </div>
       </Header>
-      {/* <ViewSelectApp isOpen={openViewSelectApp} /> */}
+      <ViewSelectApp isOpen={openViewSelectApp} />
     </>
   );
 };

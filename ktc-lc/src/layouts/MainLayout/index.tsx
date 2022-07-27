@@ -35,16 +35,16 @@ const MainLayout: React.FC = () => {
 
   const isMobile = width < 768;
 
-  useEffect(() => {
-    const token = getLocalStorage("SESSION");
-    if (token) {
-      setIsReady(true);
-       getCurrentUser();
-      getHubList();
-    } else {
-      login();
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = getLocalStorage("SESSION");
+  //   if (token) {
+  //     setIsReady(true);
+  //      getCurrentUser();
+  //     getHubList();
+  //   } else {
+  //     login();
+  //   }
+  // }, []);
 
   useEffect(() => {
     if (isMobile) {
@@ -58,23 +58,23 @@ const MainLayout: React.FC = () => {
     setCollapsed(!collapsed);
   }, [collapsed]);
 
-  if (
-    !isReady ||
-    loadingGetCurrentUser ||
-    loading ||
-    loadingGetPermissions ||
-    loadingGetHubList
-  )
-    return <PageLoading />;
+  // if (
+  //   !isReady ||
+  //   loadingGetCurrentUser ||
+  //   loading ||
+  //   loadingGetPermissions ||
+  //   loadingGetHubList
+  // )
+  //   return <PageLoading />;
 
   return (
     <Suspense fallback={<PageLoading />}>
       <Layout className={styles.root}>
-        <Header
+        {/* <Header
           onCollapse={handleCollapsedMenu}
           collapsed={collapsed}
           hubList={hubList}
-        />
+        /> */}
         <Layout className={styles.layoutHasSider}>
           <SiderMenu
             collapsed={collapsed}

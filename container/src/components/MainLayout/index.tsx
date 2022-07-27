@@ -1,4 +1,5 @@
 import { useActions } from "@/hooks/useActions";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { login } from "@/services/auth";
 import { getLocalStorage } from "@/utils/utils";
 import { useEffect } from "react";
@@ -13,10 +14,20 @@ const MainLayout: React.FC<{
 }> = ({ children }) => {
   const { getCurrentUser, getHubList } = useActions();
 
+  const {
+    loading: {
+      loadingGetCurrentUser = false,
+      loading = false,
+      loadingGetPermissions = false,
+      loadingGetHubList = false,
+    } = {},
+    hubList,
+  } = useTypedSelector((state) => state.user);
+
   useEffect(() => {
-    // alert(JSON.stringify(history));
     const token = getLocalStorage("SESSION");
     if (token) {
+      console.log({ token });
       getCurrentUser();
       getHubList();
     } else {
@@ -26,7 +37,7 @@ const MainLayout: React.FC<{
 
   return (
     <div>
-      <ComponentHeader />
+      <ComponentHeader hubList={hubList} />
       <Authorized>{children}</Authorized>
     </div>
   );

@@ -81,10 +81,10 @@ export const getCurrentUser = () => async (dispatch: Dispatch<any>) => {
       type: UserTypes.GET_CURRENT_USER,
       payload: data,
     });
-    // dispatch(getAllowedAppList());
-    // dispatch(getPermissions());
+    dispatch(getAllowedAppList());
+    dispatch(getPermissions());
   } catch (errors) {
-    // logout();
+    logout();
   }
 };
 
