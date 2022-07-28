@@ -84,7 +84,7 @@ const ComponentHeader: React.FC<{
             style={{ cursor: "pointer" }}
             src={logo}
             alt="logo"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => (window.location.href = "/ktc-lc")}
           />
 
           <span style={{ textTransform: "uppercase" }}>Demo Micro FE</span>
