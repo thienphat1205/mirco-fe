@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import store from "./state/store";
-
+import PageLoading from "./components/PageLoading";
 const AuthorCodeLayout = lazy(() => import("@/layout/AuthorCodeLayout"));
 const KtcLcApp = lazy(() => import("@/components/KtcLcApp"));
 const MainLayout = lazy(() => import("@/layout/MainLayout"));
@@ -22,14 +22,14 @@ const App = () => {
 const Main = () => {
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<PageLoading />}>
         <Routes>
           <Route element={<MainLayout />}>
             <Route exact path="/" element={<Navigate to="/ktc-lc" />} />
             <Route
               path="/qlcl/*"
               element={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<PageLoading />}>
                   <QlclApp store={store} />
                 </Suspense>
               }
@@ -37,7 +37,7 @@ const Main = () => {
             <Route
               path="/ktc-lc/*"
               element={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<PageLoading />}>
                   <KtcLcApp store={store} />
                 </Suspense>
               }
@@ -47,7 +47,7 @@ const Main = () => {
             <Route
               path="/sso-login-v2"
               element={
-                <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<PageLoading />}>
                   <AuthorCode x />
                 </Suspense>
               }

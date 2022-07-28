@@ -9,13 +9,14 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import styles from "./index.module.less";
+import { useActions } from "@/hooks/useActions";
 const SiderMenu = lazy(() => import("@/components/SiderMenu"));
 const Header = lazy(() => import("@/components/Header"));
 
 const { Content } = Layout;
 
 const MainLayout: React.FC = () => {
-  // const { getCurrentUser, getHubList } = useActions();
+  const { getCurrentUser, getHubList } = useActions();
   const {
     loading: {
       loadingGetCurrentUser = false,
@@ -33,20 +34,18 @@ const MainLayout: React.FC = () => {
   const { collapse } = useTypedSelector((state) => state.commonReducer);
   const { width } = useWindowDimensions();
 
-
   const isMobile = width < 768;
 
-  // useEffect(() => {
-  //   const token = getLocalStorage("SESSION");
-  //   if (token) {
-  //     setIsReady(true);
-  //      getCurrentUser();
-  //     getHubList();
-  //   } else {
-  //     login();
-  //   }
-  // }, []);
-
+  useEffect(() => {
+    const token = getLocalStorage("SESSION");
+    if (token) {
+      setIsReady(true);
+      getCurrentUser();
+      getHubList();
+    } else {
+      // login();
+    }
+  }, []);
 
   useEffect(() => {
     if (isMobile) {
@@ -60,14 +59,14 @@ const MainLayout: React.FC = () => {
     setCollapsed(!collapsed);
   }, [collapsed]);
 
-  // if (
-  //   !isReady ||
-  //   loadingGetCurrentUser ||
-  //   loading ||
-  //   loadingGetPermissions ||
-  //   loadingGetHubList
-  // )
-  //   return <PageLoading />;
+  if (
+    !isReady ||
+    loadingGetCurrentUser ||
+    loading ||
+    loadingGetPermissions ||
+    loadingGetHubList
+  )
+    return <PageLoading />;
 
   return (
     <Suspense fallback={<PageLoading />}>
