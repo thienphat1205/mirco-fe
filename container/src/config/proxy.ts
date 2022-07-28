@@ -34,7 +34,7 @@ const proxy: ProxyType = {
     AUTH: "https://sso-v2.ghn.vn/internal",
     NHANH: "https://nhanh-api.ghn.vn",
     UPLOAD: "https://online-gateway.ghn.vn",
-    HUB: "https://hub-stg-api.ghn.dev",
+    HUB: "https://fe-hub-prd-api.ghn.vn",
   },
 };
 

@@ -34,10 +34,15 @@ const request = async ({
   const instance = configuredAxios(serviceName);
 
   instance.interceptors.request.use((config) => {
-    const token = getLocalStorage("SESSION");
+    const prefix = serviceName === "HUB" ? "Basic" : "Bearer";
+    let token = getLocalStorage("SESSION");
+    if (serviceName === "HUB") {
+      token =
+        "YXBwcy1mcm9udGVuZDphTTJvTHE1MGFzZHdlaWxpc2hkamtyZW9oanNkamZzaGtqc2h3cndwZnNjc3ZnMw==";
+    }
     config.headers = {
       ...config.headers,
-      Authorization: token ? `Bearer ${token}` : "",
+      Authorization: token ? `${prefix} ${token}` : "",
     };
     return config;
   });

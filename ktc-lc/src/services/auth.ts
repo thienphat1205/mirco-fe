@@ -58,7 +58,7 @@ export const getHubListAPI = async () => {
   const rs = await APINetworkService({
     serviceName: "HUB",
     method: "GET",
-    url: `/hms/v2/location?q={"scopeCode": "GHN_HUB","tag":"SORTING","isEnabled":true}&getTotal=true`,
+    url: `/hms/v1/location?q={"scopeCode": "GHN_HUB","tag":"SORTING","isEnabled":true}&getTotal=true`,
     data: {},
   });
   return rs;

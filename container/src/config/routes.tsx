@@ -5,6 +5,7 @@ const KtcLcApp = lazy(() => import("@/components/KtcLcApp"));
 const MainLayout = lazy(() => import("@/layouts/MainLayout"));
 const QlclApp = lazy(() => import("@/components/QlclApp"));
 const AuthorCode = lazy(() => import("@/pages/AuthorCode"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 export interface RouteType {
   path: string;
@@ -64,6 +65,13 @@ const routeList: LayoutType[] = [
         key: "qlcl",
         icon: <FaClone />,
         component: QlclApp,
+      },
+      {
+        title: "Giao Hàng Nhanh",
+        path: "*",
+        key: "not-found",
+        redirect: "/ktc-lc",
+        component: NotFound,
       },
     ],
   },
