@@ -1,4 +1,4 @@
-const initialState = { collapse: false };
+const initialState = { collapse: false, hideHeader: true };
 
 const UPDATE_COLLAPSE_HEADER = "UPDATE_COLLAPSE_HEADER";
 

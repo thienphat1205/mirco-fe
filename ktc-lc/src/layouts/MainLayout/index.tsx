@@ -4,12 +4,13 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 // import { login } from "@/services/auth";
 import Card from "@/components/Card";
 import PageLoading from "@/components/PageLoading";
+import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import styles from "./index.module.less";
-import { useActions } from "@/hooks/useActions";
+import { login } from "@/services/auth";
 const SiderMenu = lazy(() => import("@/components/SiderMenu"));
 const Header = lazy(() => import("@/components/Header"));
 
@@ -27,11 +28,10 @@ const MainLayout: React.FC = () => {
     hubList,
   } = useTypedSelector((state) => state.user);
   const [isReady, setIsReady] = useState<boolean>(false);
-  const [collapsed, setCollapsed] = useState<boolean>(
-    !!getLocalStorage("collapse")
-  );
+  const [collapsed, setCollapsed] = useState<boolean>(false);
 
-  const { collapse } = useTypedSelector((state) => state.commonReducer) || {};
+  const { collapse, hideHeader } =
+    useTypedSelector((state) => state.commonReducer) || {};
   const { width } = useWindowDimensions();
 
   const isMobile = width < 768;
@@ -43,7 +43,7 @@ const MainLayout: React.FC = () => {
       getCurrentUser();
       getHubList();
     } else {
-      // login();
+      !hideHeader && login();
     }
   }, []);
 
@@ -68,17 +68,21 @@ const MainLayout: React.FC = () => {
   )
     return <PageLoading />;
 
+  console.log({ collapsed, collapse });
+
   return (
     <Suspense fallback={<PageLoading />}>
       <Layout className={styles.root}>
-        {/* <Header
-          onCollapse={handleCollapsedMenu}
-          collapsed={collapsed}
-          hubList={hubList}
-        /> */}
+        {!hideHeader && (
+          <Header
+            onCollapse={handleCollapsedMenu}
+            collapsed={collapsed}
+            hubList={hubList}
+          />
+        )}
         <Layout className={styles.layoutHasSider}>
           <SiderMenu
-            collapsed={collapse}
+            collapsed={collapse || collapsed}
             isMobile={isMobile}
             onCollapse={handleCollapsedMenu}
           />
