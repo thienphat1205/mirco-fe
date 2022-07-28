@@ -8,7 +8,7 @@ import store from "./state/store";
 const App = () => {
   return (
     <Provider store={store}>
-      <React.Suspense fallback={null}>
+      <React.Suspense fallback={<PageLoading />}>
         <Main />
       </React.Suspense>
     </Provider>
