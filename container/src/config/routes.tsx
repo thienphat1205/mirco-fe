@@ -19,8 +19,7 @@ export interface RouteType {
 }
 
 export interface LayoutType {
-  // layout?: React.FC<{}>;
-  layout?: any;
+  layout?: React.FC<{}>;
   name: string;
   key: string;
   routes: RouteType[];
@@ -29,20 +28,20 @@ export interface LayoutType {
 const routeList: LayoutType[] = [
   {
     name: "AuthorCodeLayout",
-    layout: <AuthorCodeLayout />,
+    layout: AuthorCodeLayout,
     key: "AuthorCodeLayout",
     routes: [
       {
         title: "Verify code",
         path: "/sso-login-v2",
         key: "AuthorCode",
-        component: <AuthorCode />,
+        component: AuthorCode,
       },
     ],
   },
   {
     name: "MainLayout",
-    layout: <MainLayout />,
+    layout: MainLayout,
     key: "MainLayout",
     routes: [
       {
@@ -51,20 +50,20 @@ const routeList: LayoutType[] = [
         key: "home",
         redirect: "/ktc-lc",
         exact: true,
-        component: <KtcLcApp />,
+        component: KtcLcApp,
       },
       {
         title: "Giao hàng nhanh",
         path: "/ktc-lc/*",
         key: "ktc-lc",
-        component: <KtcLcApp />,
+        component: KtcLcApp,
       },
       {
         title: "Quản lý chất lượng",
         path: "/qlcl/*",
         key: "qlcl",
         icon: <FaClone />,
-        component: <QlclApp />,
+        component: QlclApp,
       },
     ],
   },
