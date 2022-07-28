@@ -1,25 +1,23 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { createMemoryHistory, createBrowserHistory } from "history";
-import App from "./App";
 import { getEnv } from "@/utils/utils";
+import { createBrowserHistory, createMemoryHistory } from "history";
+import ReactDOM from "react-dom";
+import App from "./App";
 
 const ENV = getEnv();
 
 // Mount function to start up the app
-const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
+const mount = (el, { onNavigate, defaultHistory, initialPath, store }) => {
   const history =
     defaultHistory ||
     createMemoryHistory({
       initialEntries: [initialPath],
     });
-
   if (onNavigate) {
     history.listen(onNavigate);
   }
-  console.log("history QLCL", history);
 
-  ReactDOM.render(<App history={history} />, el);
+  ReactDOM.render(<App history={history} store={store} />, el);
+
   return {
     onParentNavigate: ({ pathname: nextPathname }) => {
       // history.push(nextPathname);

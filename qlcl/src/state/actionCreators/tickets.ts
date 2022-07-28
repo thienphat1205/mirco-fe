@@ -21,7 +21,7 @@ import {
   getAssingmentRateListAPI,
 } from "@/services/ticket";
 import { dialog } from "@/utils/utils";
-import store from "@/state/store";
+import { store } from "@/state/store";
 
 interface ResultType {
   error?: number;

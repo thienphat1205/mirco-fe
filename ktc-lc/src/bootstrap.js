@@ -12,7 +12,6 @@ const mount = (el, { onNavigate, defaultHistory, initialPath, store }) => {
     createMemoryHistory({
       initialEntries: [initialPath],
     });
-  console.log("history KTC-LC", history);
   if (onNavigate) {
     history.listen(onNavigate);
   }

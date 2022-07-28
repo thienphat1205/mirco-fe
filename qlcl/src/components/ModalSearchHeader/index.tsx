@@ -20,10 +20,6 @@ const ContentModal: React.FC<
   const navigate = useNavigate();
   const { ticketStatusList = [] } = useTypedSelector((state) => state.metaData);
 
-  useEffect(() => {
-    console.log("orderCode useEffect", orderCode);
-  }, [orderCode]);
-
   const handleClickRow = (row: any) => {
     const { ticketId = "" } = row;
     if (ticketId) {

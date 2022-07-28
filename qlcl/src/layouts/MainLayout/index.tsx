@@ -35,6 +35,9 @@ const MainLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const { width } = useWindowDimensions();
 
+  const state = useTypedSelector((state) => state);
+  const { collapse } = useTypedSelector((state) => state.commonReducer);
+
   const isMobile = width < 768;
 
   useEffect(() => {
@@ -71,7 +74,7 @@ const MainLayout: React.FC = () => {
         {/* <Header onCollapse={handleCollapsedMenu} collapsed={collapsed} /> */}
         <Layout className={styles.layoutHasSider}>
           <SiderMenu
-            collapsed={collapsed}
+            collapsed={collapse}
             isMobile={isMobile}
             onCollapse={handleCollapsedMenu}
           />

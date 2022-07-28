@@ -23,7 +23,6 @@ const App = (props) => {
 };
 
 const Main = ({ history }) => {
-  console.log("history App KTC-LC", history);
   return (
     <BrowserRouter history={history} basename="/ktc-lc">
       <Routes>

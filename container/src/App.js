@@ -30,7 +30,7 @@ const Main = () => {
               path="/qlcl/*"
               element={
                 <Suspense fallback={<div>Loading...</div>}>
-                  <QlclApp />
+                  <QlclApp store={store} />
                 </Suspense>
               }
             />
@@ -48,7 +48,7 @@ const Main = () => {
               path="/sso-login-v2"
               element={
                 <Suspense fallback={<div>Loading...</div>}>
-                  <AuthorCode />
+                  <AuthorCode x />
                 </Suspense>
               }
             />
