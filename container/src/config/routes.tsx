@@ -1,8 +1,8 @@
 import { lazy, ReactElement } from "react";
 import { FaClone } from "react-icons/fa";
-const AuthorCodeLayout = lazy(() => import("@/layout/AuthorCodeLayout"));
+const AuthorCodeLayout = lazy(() => import("@/layouts/AuthorCodeLayout"));
 const KtcLcApp = lazy(() => import("@/components/KtcLcApp"));
-const MainLayout = lazy(() => import("@/layout/MainLayout"));
+const MainLayout = lazy(() => import("@/layouts/MainLayout"));
 const QlclApp = lazy(() => import("@/components/QlclApp"));
 const AuthorCode = lazy(() => import("@/pages/AuthorCode"));
 

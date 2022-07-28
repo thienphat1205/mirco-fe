@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import Authorized from "@/components/Authorized";
 import PageLoading from "@/components/PageLoading";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
@@ -32,20 +33,22 @@ const MainLayout: React.FC = () => {
     }
   }, []);
 
-  if (
-    !isReady ||
-    loadingGetCurrentUser ||
-    loading ||
-    loadingGetPermissions ||
-    loadingGetHubList
-  )
-    return <PageLoading />;
+  // if (
+  //   !isReady ||
+  //   loadingGetCurrentUser ||
+  //   loading ||
+  //   loadingGetPermissions ||
+  //   loadingGetHubList
+  // )
+  //   return <PageLoading />;
 
   return (
-    <Suspense fallback={<PageLoading />}>
+    <>
       <Header hubList={hubList} />
-      <Outlet />
-    </Suspense>
+      <Authorized>
+        <Outlet />
+      </Authorized>
+    </>
   );
 };
 

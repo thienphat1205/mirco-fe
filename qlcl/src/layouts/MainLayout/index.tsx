@@ -36,7 +36,7 @@ const MainLayout: React.FC = () => {
   const { width } = useWindowDimensions();
 
   const state = useTypedSelector((state) => state);
-  const { collapse } = useTypedSelector((state) => state.commonReducer);
+  const { collapse } = useTypedSelector((state) => state.commonReducer) || {};
 
   const isMobile = width < 768;
 

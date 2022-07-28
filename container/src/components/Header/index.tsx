@@ -24,7 +24,7 @@ const ComponentHeader: React.FC<{
   const { currentUser: { userInfo = {} } = {} } = useTypedSelector(
     (state) => state.user
   );
-  const { collapse } = useTypedSelector((state) => state.commonReducer);
+  const { collapse } = useTypedSelector((state) => state.commonReducer) || {};
 
   const { ssoId = "", profile: { fullname = "" } = {} } = userInfo;
 
