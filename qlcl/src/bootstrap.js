@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { createMemoryHistory, createBrowserHistory } from "history";
 import App from "./App";
+
 import { getEnv } from "@/utils/utils";
 
 const ENV = getEnv();
@@ -17,12 +18,10 @@ const mount = (el, { onNavigate, defaultHistory, initialPath }) => {
   if (onNavigate) {
     history.listen(onNavigate);
   }
-  console.log("history QLCL", history);
 
   ReactDOM.render(<App history={history} />, el);
   return {
     onParentNavigate: ({ pathname: nextPathname }) => {
-      // history.push(nextPathname);
       // nextPathname from location
       const { pathname } = history.location;
       if (nextPathname !== pathname) {

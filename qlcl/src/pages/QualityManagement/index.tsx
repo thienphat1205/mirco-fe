@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import s from "./index.module.less";
 import { Dropdown } from "antd";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import TableBacklogList from "@/components/TableBacklogList";
 import TableComplaintList from "@/components/TableComplaintList";
 import TableAssignmentRate from "@/components/TableAssignmentRate";
@@ -21,7 +21,7 @@ import {
 import { ISearch } from "@/modal/index";
 
 const Home: React.FC = () => {
-  const navigate = useNavigate();
+  const history = useHistory();
   const {
     totalBacklog = 0,
     totalComplaint = 0,
@@ -88,7 +88,7 @@ const Home: React.FC = () => {
     (values: any) => {
       const params = { tab: search?.tab, ...values };
       const paramsString = queryString.stringify(params);
-      navigate(`?${paramsString}`);
+      history.push(`?${paramsString}`);
     },
     [search]
   );

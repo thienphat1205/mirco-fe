@@ -2,7 +2,6 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import { getLocalStorage } from "@/utils/utils";
 import { login } from "@/services/auth";
-import { Outlet } from "react-router-dom";
 import { Layout } from "antd";
 import PageLoading from "@/components/PageLoading";
 import Card from "@/components/Card";
@@ -12,12 +11,15 @@ import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import useWindowDimensions from "@/hooks/useWindowDimensions";
 import ButtonWarning from "@/components/ButtonWarning";
-const SiderMenu = lazy(() => import("@/components/SiderMenu"));
-const Header = lazy(() => import("@/components/Header"));
+
+import Header from "@/components/Header";
+import SiderMenu from "@/components/SiderMenu";
 
 const { Content } = Layout;
 
-const MainLayout: React.FC = () => {
+const MainLayout: React.FC = (props: any) => {
+  const { children } = props;
+  console.log("children", children);
   const {
     getCurrentUser,
     getWarehouseList,
@@ -62,30 +64,28 @@ const MainLayout: React.FC = () => {
     setCollapsed(!collapsed);
   }, [collapsed]);
 
-  // if (!isReady || loadingGetCurrentUser || loading || loadingGetPermissions)
-  //   return <PageLoading />;
+  if (!isReady || loadingGetCurrentUser || loading || loadingGetPermissions)
+    return <PageLoading />;
 
   return (
-    <Suspense fallback={<PageLoading />}>
-      <Layout className={styles.root}>
-        {/* <Header onCollapse={handleCollapsedMenu} collapsed={collapsed} /> */}
-        <Layout className={styles.layoutHasSider}>
-          <SiderMenu
-            collapsed={collapsed}
-            isMobile={isMobile}
-            onCollapse={handleCollapsedMenu}
-          />
-          <Content>
-            <Card>
-              <Authorized>
-                <Outlet />
-                <ButtonWarning />
-              </Authorized>
-            </Card>
-          </Content>
-        </Layout>
+    <Layout className={styles.root}>
+      <Header onCollapse={handleCollapsedMenu} collapsed={collapsed} />
+      <Layout className={styles.layoutHasSider}>
+        <SiderMenu
+          collapsed={collapsed}
+          isMobile={isMobile}
+          onCollapse={handleCollapsedMenu}
+        />
+        <Content>
+          <Card>
+            <Authorized>
+              {children}
+              <ButtonWarning />
+            </Authorized>
+          </Card>
+        </Content>
       </Layout>
-    </Suspense>
+    </Layout>
   );
 };
 

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { Button, Row, Col, Skeleton } from "antd";
 import PenaltyTicketInformation from "@/components/PenaltyTicketInfo";
 import ArrearsAmount from "@/components/ArrearsAmount";
@@ -16,8 +16,8 @@ import ViewHistory from "./ViewHistory";
 import NotFound from "../NotFound";
 
 const Detail: React.FC = () => {
-  const { id = "" } = useParams();
-  const navigate = useNavigate();
+  const { id = "" } = useParams<{ id: string }>();
+  const history = useHistory();
 
   const [commonState, setCommonState] = React.useState<any>({
     message: "",
@@ -105,7 +105,7 @@ const Detail: React.FC = () => {
     const status: any = ticketDetail?.status || "0";
     return (
       <div className={s.viewTop}>
-        <div className={s.btnBack} onClick={() => navigate(-1)}>
+        <div className={s.btnBack} onClick={() => history.goBack()}>
           <FaAngleLeft style={{ marginRight: "8px" }} />
           Quay lại
         </div>
@@ -170,7 +170,7 @@ const Detail: React.FC = () => {
     });
   }
 
-  const onStateChange = React.useCallback((objectValues) => {
+  const onStateChange = React.useCallback((objectValues: any) => {
     setCommonState((prevState: any) => ({
       ...prevState,
       ...objectValues,

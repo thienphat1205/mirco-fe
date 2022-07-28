@@ -1,8 +1,7 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 
-const AuthorCodeLayout: React.FC = () => {
-  return <Outlet />;
+const AuthorCodeLayout: React.FC = (props: any) => {
+  return <>{props.children}</>;
 };
 
 export default AuthorCodeLayout;

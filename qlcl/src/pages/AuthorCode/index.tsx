@@ -7,11 +7,11 @@ import s from "./index.module.less";
 import queryString from "query-string";
 import { useActions } from "@/hooks/useActions";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const AuthorCode: React.FC = () => {
   const { search } = useLocation();
-  const navigate = useNavigate();
+  const navigate = useHistory();
   const { loading: { loadingVerify = false } = {} } = useTypedSelector(
     (state) => state.user
   );
@@ -24,7 +24,7 @@ const AuthorCode: React.FC = () => {
     }
   }, []);
 
-  const handleNavigateToHomePage = (): void => navigate("/");
+  const handleNavigateToHomePage = (): void => navigate.push("/");
 
   return (
     <div className={s.root}>

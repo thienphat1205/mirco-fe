@@ -1,8 +1,6 @@
 import React, { lazy, ReactElement } from "react";
 import MainLayout from "@/layouts/MainLayout";
 import AuthorCodeLayout from "@/layouts/AuthorCodeLayout";
-import { FaHome, FaClipboardList, FaClone } from "react-icons/fa";
-// const AutoArrears = lazy(() => import("@/pages/AutoArrears"));
 const ArrearsList = lazy(() => import("@/pages/ArrearsList"));
 const Home = lazy(() => import("@/pages/Home"));
 const Detail = lazy(() => import("@/pages/Detail"));
@@ -61,14 +59,12 @@ const routeList: LayoutType[] = [
         title: "Quản lý chất lượng",
         path: "/home",
         key: "AutoArrears",
-        icon: <FaHome />,
         component: QualityManagement,
       },
       {
         title: "DS phiếu theo dõi",
         path: "/tickets",
         key: "ArrearsTickets",
-        icon: <FaClipboardList />,
         component: ArrearsList,
         permission: "view_all_ticket",
       },
@@ -76,7 +72,6 @@ const routeList: LayoutType[] = [
         title: "Thiết lập hệ thống",
         path: "/system-settings",
         key: "SystemSettings",
-        icon: <FaClone />,
         component: SystemSettings,
         permission: "system_settings",
       },

@@ -1,11 +1,11 @@
 import React from "react";
 import { Result, Button } from "antd";
-import { useNavigate } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const NotFound: React.FC = () => {
-  let navigate = useNavigate();
+  let navigate = useHistory();
   const handleClick = () => {
-    navigate("/");
+    navigate.push("/");
   };
   return (
     <Result
