@@ -46,15 +46,13 @@ export const verifyAuthorCode =
         type: UserTypes.USER_LOADING,
         payload: { loadingVerify: true },
       });
-       const response: ResultType = await verifyAuthorCodeAPI(payload);
+      const response: ResultType = await verifyAuthorCodeAPI(payload);
       dispatch({
         type: UserTypes.USER_LOADING,
         payload: { loadingVerify: false },
       });
       const { status, data = {} } = response;
-      if (status !== "OK"){
-        throw response;
-      } 
+      if (status !== "OK") throw response;
       const { accessToken, iamToken } = data;
       setLocalStorage("SESSION", iamToken);
       setLocalStorage("ACCESS_TOKEN", accessToken);
@@ -135,7 +133,7 @@ export const getAllowedAppList = () => async (dispatch: Dispatch<any>) => {
       if (link) {
         window.location.href = link;
       } else {
-        // logout();
+        logout();
       }
     }
   } catch (errors) {

@@ -9,7 +9,7 @@ import reducer from "./state/reducer";
 import { store as RelatedStore } from "./state/store";
 
 const App = (props) => {
-  const { store = RelatedStore } = props;
+  const { store = RelatedStore, history } = props;
 
   useEffect(() => {
     store.injectReducer("relatedReducer", reducer);
@@ -17,14 +17,15 @@ const App = (props) => {
 
   return (
     <Provider store={store || {}}>
-      <Main />
+      <Main history={history} />
     </Provider>
   );
 };
 
-const Main = () => {
+const Main = ({ history }) => {
+  console.log("history App KTC-LC", history);
   return (
-    <BrowserRouter basename="/ktc-lc">
+    <BrowserRouter history={history} basename="/ktc-lc">
       <Routes>
         {routeList.map((item) => {
           const { layout: Layout, routes = [], name } = item;

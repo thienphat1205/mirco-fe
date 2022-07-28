@@ -26,8 +26,6 @@ export const verifyAuthorCodeAPI = async (data: PayloadActionVerifyType) => {
   const rs = await APINetworkService({
     url: "/lastmile/auth/login-sso",
     data,
-  }).then((data)=> {
-    return data
   });
   return rs;
 };

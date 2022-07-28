@@ -1,16 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, Fragment } from "react";
-import styles from "./index.module.less";
-import { Row, Col } from "antd";
-import { CSSTransition } from "react-transition-group";
 import { useTypedSelector } from "@/hooks/useTypedSelector";
-import { setPreviousUrl, getPreviousURL, getEnv, appList } from "@/utils/utils";
+import { appList, getEnv } from "@/utils/utils";
+import { Col, Row } from "antd";
+import React, { Fragment, useEffect, useState } from "react";
+import { CSSTransition } from "react-transition-group";
+import styles from "./index.module.less";
 
 interface ViewProps {
   isOpen: boolean;
+
+  onClose: () => void;
 }
 
-const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
+const ViewSelectApp: React.FC<ViewProps> = ({ isOpen, onClose }) => {
+
   const { allowedAppList } = useTypedSelector((state) => state.user);
 
   const [appDataDisplay, setAppDataDisplay] = useState<any[]>([]);
@@ -18,7 +21,7 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
   useEffect(() => {
     const ENV = getEnv();
     const formatData = allowedAppList
-      .map((item) => {
+      .map((item: any) => {
         const findItem: any = appList.find((itemApp) => itemApp.key === item);
         return {
           name: findItem?.name,
@@ -30,7 +33,7 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
       })
       .sort((a: any, b: any) => a?.indexApp - b?.indexApp);
     const perChunk = 4;
-    const result = formatData.reduce((resultArray: any, item, index) => {
+    const result = formatData.reduce((resultArray: any, item: any, index: any) => {
       const chunkIndex = Math.floor(index / perChunk);
       if (!resultArray[chunkIndex]) {
         resultArray[chunkIndex] = [];
@@ -44,10 +47,10 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
   const genListApp = (list: any): JSX.Element => {
     return (
       <>
-        {list.map((app: any) => {
+        {list.map((app: any, idx: number) => {
           const { name, className, key } = app;
           return (
-            <Col md={6} sm={12} xs={24} key={key}>
+            <Col md={6} sm={12} xs={24} key={idx}>
               <div
                 className={`${styles.itemApp} ${styles[className]}`}
                 onClick={() => openNewPage(app)}
@@ -64,23 +67,25 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen }) => {
   };
 
   const openNewPage = (appSelected: any) => {
-    const { pathname, search } = window.location;
+    // const { pathname, search } = window.location;
     const { link, key } = appSelected;
-    const prevUrl = getPreviousURL();
-    const pathReplace = pathname
-      .replace("/ktc-lc/", "/")
-      .replace("/ktc-lc", "/");
-    const newObjUrl = {
-      ...prevUrl,
-      ktc_lc: !search ? pathReplace : `${pathReplace}${search}`,
-    };
-    setPreviousUrl(newObjUrl);
-    const prevPathAppSelected = prevUrl[key];
-    let href = link;
-    if (prevPathAppSelected) {
-      href = `${link}${prevPathAppSelected}`;
-    }
-    window.location.href = href;
+    // const prevUrl = getPreviousURL();
+    // const pathReplace = pathname
+    //   .replace("/ktc-lc/", "/")
+    //   .replace("/ktc-lc", "/");
+    // const newObjUrl = {
+    //   ...prevUrl,
+    //   ktc_lc: !search ? pathReplace : `${pathReplace}${search}`,
+    // };
+    // setPreviousUrl(newObjUrl);
+    // const prevPathAppSelected = prevUrl[key];
+    // let href = link;
+    // if (prevPathAppSelected) {
+    //   href = `${link}${prevPathAppSelected}`;
+    // }
+    // navigate(link);
+    window.location.href = link;
+    onClose();
   };
 
   return (

@@ -19,10 +19,11 @@ const { Header } = Layout;
 const { Option } = Select;
 
 const ComponentHeader: React.FC<{
-  hubList?: { hubId: string; hubName: string }[];
-}> = ({ hubList }) => {
+
+  hubList: { hubId: string; hubName: string }[];
+}> = ({  hubList }) => {
   const { currentUser: { userInfo = {} } = {} } = useTypedSelector(
-    (state: { user: any }) => state.user
+    (state) => state.user
   );
   const { collapse } = useTypedSelector((state) => state.commonReducer);
 
@@ -82,7 +83,7 @@ const ComponentHeader: React.FC<{
           <Link to="/">
             <img className={styles.logo} src={logo} alt="logo" />
           </Link>
-          <span style={{ textTransform: "uppercase" }}>KTC & LC</span>
+          <span style={{ textTransform: "uppercase" }}>Demo Micro FE</span>
         </div>
         <div className={styles.contentRight}>
           <Select
@@ -95,7 +96,7 @@ const ComponentHeader: React.FC<{
             }}
             onChange={handleSelectHub}
           >
-            {hubList?.map((hubInfo: any) => (
+            {hubList.map((hubInfo: any) => (
               <Option value={hubInfo?.hubId} key={hubInfo?.hubId}>
                 {hubInfo?.hubName}
               </Option>
@@ -109,13 +110,16 @@ const ComponentHeader: React.FC<{
             />
           </Dropdown>
           <img
-            src={!false ? iconClose : iconOpen}
+            src={!openViewSelectApp ? iconClose : iconOpen}
             alt="toggle"
             onClick={handleOpenModal}
           />
         </div>
       </Header>
-      <ViewSelectApp isOpen={openViewSelectApp} />
+      <ViewSelectApp
+        isOpen={openViewSelectApp}
+        onClose={() => setOpenViewSelectApp(false)}
+      />
     </>
   );
 };

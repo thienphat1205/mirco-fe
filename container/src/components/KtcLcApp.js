@@ -22,7 +22,6 @@ export default (props) => {
       },
       store,
     });
-
     onParentNavigate(location);
   }, [location]);
 
