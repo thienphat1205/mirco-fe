@@ -19,9 +19,8 @@ const { Header } = Layout;
 const { Option } = Select;
 
 const ComponentHeader: React.FC<{
-
   hubList: { hubId: string; hubName: string }[];
-}> = ({  hubList }) => {
+}> = ({ hubList }) => {
   const { currentUser: { userInfo = {} } = {} } = useTypedSelector(
     (state) => state.user
   );
@@ -80,9 +79,14 @@ const ComponentHeader: React.FC<{
             />
           )}
 
-          <Link to="/">
-            <img className={styles.logo} src={logo} alt="logo" />
-          </Link>
+          <img
+            className={styles.logo}
+            style={{ cursor: "pointer" }}
+            src={logo}
+            alt="logo"
+            onClick={() => (window.location.href = "/")}
+          />
+
           <span style={{ textTransform: "uppercase" }}>Demo Micro FE</span>
         </div>
         <div className={styles.contentRight}>
