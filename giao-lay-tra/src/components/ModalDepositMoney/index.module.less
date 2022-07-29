@@ -1,0 +1,69 @@
+@import "../../variables.less";
+
+.root {
+  .contentModal {
+    .inputSearch {
+      margin-bottom: 1rem;
+      :global {
+        .ant-input-search
+          > .ant-input-group
+          > .ant-input-group-addon:last-child
+          .ant-input-search-button {
+          border-radius: 0 10px 10px 0;
+        }
+        .ant-input-search .ant-input {
+          height: 32px;
+          border-radius: 10px 0 0 10px;
+          box-shadow: none;
+        }
+      }
+    }
+    .viewWarning {
+      color: red;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .textLabel {
+      color: @colorPlaceholder;
+    }
+
+    .textValue {
+      font-weight: 500;
+    }
+  }
+  .btnCancel {
+    height: 32px;
+    width: 74px;
+    background-color: @colorPlaceholder;
+    color: @white !important;
+    &:hover {
+      background-color: @colorPlaceholder;
+      opacity: 0.8;
+    }
+  }
+  .btnSubmit {
+    margin-left: 8px;
+    height: 32px;
+    &:disabled {
+      background-color: #ccc;
+      color: #fff;
+    }
+  }
+  :global {
+    .ant-modal-header {
+      border-radius: 12px 12px 0 0;
+    }
+    .ant-modal-body {
+      padding: 15px;
+    }
+    .ant-modal-close {
+      top: -50px;
+      right: -20px;
+    }
+    .ant-modal-content {
+      border-radius: 12px;
+    }
+  }
+}

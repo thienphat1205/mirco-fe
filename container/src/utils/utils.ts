@@ -95,10 +95,10 @@ export const appList: UiAppListType = [
     name: "Giao-Lấy-Trả",
     className: "app-lastmile",
     link: {
-      LOCAL: "https://nhanh.ghn.dev",
-      STAGING: "https://nhanh.ghn.dev",
-      BETA: "https://beta-nhanh.ghn.vn",
-      PRODUCTION: "https://nhanh.ghn.vn",
+      LOCAL: "/giao-lay-tra",
+      STAGING: "/giao-lay-tra",
+      BETA: "/giao-lay-tra",
+      PRODUCTION: "/giao-lay-tra",
     },
   },
   // {

@@ -1,0 +1,122 @@
+@import "../../variables.less";
+
+.root {
+  padding: 20px;
+  .textTitle {
+    color: @secondaryColor;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  .iconExpand {
+    color: @secondaryColor;
+    font-size: 14px !important;
+  }
+
+  :global {
+    .ant-collapse > .ant-collapse-item > .ant-collapse-header {
+      padding: 0 0 15px 0;
+    }
+    .ant-collapse-icon-position-right
+      > .ant-collapse-item
+      > .ant-collapse-header
+      .ant-collapse-arrow {
+      top: 15px;
+      right: 0;
+    }
+    // .ant-collapse > .ant-collapse-item {
+    // border-bottom: none;
+    // }
+    .ant-collapse-content > .ant-collapse-content-box {
+      padding: 15px;
+    }
+    .ant-collapse-borderless {
+      background-color: #fff;
+      border: 0;
+    }
+  }
+}
+
+.viewTable {
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0 6px 24px 0, rgba(0, 0, 0, 0.08) 0 0 0 1px;
+  overflow: hidden;
+  .viewTableSummary {
+    background-color: #fff;
+  }
+  .rowColor {
+    background-color: #fafafa;
+  }
+  :global {
+    .ant-table-row {
+      cursor: pointer;
+    }
+    .ant-tag {
+      border-radius: 5px;
+      min-width: 70px;
+      text-align: center;
+    }
+  }
+}
+
+.viewPagination {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.itemDenominations {
+  width: 100%;
+  height: 150px;
+  box-sizing: border-box;
+  padding: 8px;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  p {
+    margin: 0;
+  }
+
+  &__viewLogo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      width: 60px;
+      height: auto;
+      object-fit: contain;
+    }
+  }
+  &__viewEndow {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 10px;
+    height: 15px;
+  }
+  &__textAmountEndow {
+    font-size: 35px;
+    text-align: center;
+  }
+  &__endowAmount {
+    font-size: 18px;
+    margin-bottom: 7px;
+    text-align: center;
+    height: 25px;
+  }
+  &__footer {
+    font-size: 10px;
+    text-align: center;
+  }
+  &:hover {
+    opacity: 0.9;
+  }
+  &:active {
+    transform: translateY(-1px);
+  }
+}
+
+@media screen and (min-width: 1600px) {
+  .itemDenominations {
+    max-width: 300px;
+  }
+}

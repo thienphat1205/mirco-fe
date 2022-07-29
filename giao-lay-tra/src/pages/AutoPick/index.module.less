@@ -1,0 +1,138 @@
+@import "../../variables.less";
+
+.root {
+  padding: 20px;
+  .textTitle {
+    color: @secondaryColor;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+}
+
+.store {
+  .viewFilter {
+    width: 100%;
+    .inputOrderCode {
+      width: 100%;
+      :global {
+        .ant-input:placeholder-shown {
+          text-overflow: ellipsis;
+          font-size: 14px;
+        }
+        .ant-input {
+          font-size: 14px;
+        }
+        .ant-input-affix-wrapper {
+          border-radius: 4px !important;
+        }
+      }
+    }
+    .selectAction {
+      :global {
+        .ant-select {
+          width: 100%;
+        }
+        .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+  .viewTable {
+    .viewActionTable {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      svg:not(:first-child) {
+        margin-left: 8px;
+      }
+      &__edit {
+        cursor: pointer;
+        color: @iconEdit;
+      }
+      &__remove {
+        cursor: pointer;
+        color: @iconRemove;
+      }
+    }
+  }
+  :global {
+    .ant-tag {
+      border-radius: 5px;
+      min-width: 50px;
+      text-align: center;
+    }
+  }
+}
+
+.history {
+  .viewFilter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .selectAction {
+      width: 250px;
+      :global {
+        .ant-select {
+          width: 100%;
+        }
+        .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+}
+
+.formSetting {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  .viewButtonSubmit {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: flex-end;
+    .btnSubmit {
+      width: 125px;
+    }
+  }
+  .viewForm {
+    padding: 20px;
+    p {
+      margin: 0;
+    }
+    .viewRow {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      &__left {
+        .textLabel {
+          font-size: 15px;
+          margin-bottom: 10px;
+          text-transform: uppercase;
+          font-weight: bold;
+        }
+      }
+      &__right {
+        display: flex;
+        align-items: center;
+        .textLabel {
+          min-width: 70px;
+          margin-left: 10px;
+        }
+        :global {
+          .ant-input-number {
+            width: 200px;
+            border-radius: 4px;
+          }
+          .ant-form-item {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

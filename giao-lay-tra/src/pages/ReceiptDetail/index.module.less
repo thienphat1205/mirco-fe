@@ -1,0 +1,57 @@
+@import "../../variables.less";
+
+.root {
+  padding: 1rem;
+  .titlePage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .viewRight {
+      display: flex;
+      align-items: center;
+      .receiptCode {
+        font-size: 20px;
+        color: @primaryColor;
+        margin: 0 0.5rem;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .btnBack {
+        background: #f1f1f1;
+        border-radius: 8px;
+        padding: 3px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #3d3837 !important;
+        font-size: 13px;
+        margin-right: 0.5rem;
+        cursor: pointer;
+        &:active {
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+  .content {
+    height: fit-content;
+    margin-top: 0.5rem;
+    .viewInfoList {
+      padding-left: 1rem;
+      p {
+        margin-bottom: 2px;
+        line-height: 17.81px;
+      }
+      .textLabel {
+        font-weight: 500;
+        font-size: 11px;
+        color: @colorPlaceholder;
+        margin-bottom: 2px;
+        line-height: 14px;
+      }
+      .textValue {
+        font-size: 14px;
+      }
+    }
+  }
+}

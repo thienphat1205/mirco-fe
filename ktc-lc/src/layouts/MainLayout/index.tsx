@@ -11,6 +11,7 @@ import { Layout } from "antd";
 import { Outlet } from "react-router-dom";
 import styles from "./index.module.less";
 import { login } from "@/services/auth";
+import Authorized from "@/components/Authorized";
 const SiderMenu = lazy(() => import("@/components/SiderMenu"));
 const Header = lazy(() => import("@/components/Header"));
 
@@ -27,11 +28,11 @@ const MainLayout: React.FC = () => {
     } = {},
     hubList,
   } = useTypedSelector((state) => state.user);
+  const { collapse, hideHeader } =
+    useTypedSelector((state) => state.commonReducer) || {};
   const [isReady, setIsReady] = useState<boolean>(false);
   const [collapsed, setCollapsed] = useState<boolean>(false);
 
-  const { collapse, hideHeader } =
-    useTypedSelector((state) => state.commonReducer) || {};
   const { width } = useWindowDimensions();
 
   const isMobile = width < 768;
@@ -88,9 +89,9 @@ const MainLayout: React.FC = () => {
           />
           <Content>
             <Card>
-              {/* <Authorized> */}
-              <Outlet />
-              {/* </Authorized> */}
+              <Authorized>
+                <Outlet />
+              </Authorized>
             </Card>
           </Content>
         </Layout>

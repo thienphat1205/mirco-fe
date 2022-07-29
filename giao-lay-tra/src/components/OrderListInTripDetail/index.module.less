@@ -1,0 +1,47 @@
+.root {
+  .viewColRight {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .viewAddress {
+    p {
+      margin: 0;
+    }
+  }
+  .tag {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    font-weight: 500;
+  }
+}
+
+.formFilter {
+  :global {
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      border-radius: 4px;
+    }
+  }
+}
+
+.actionStatusPicking {
+  .selectUpdateStatus {
+    width: 200px;
+    margin-top: 0.5rem;
+  }
+  :global {
+    .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+      border-radius: 4px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .root {
+    .viewColRight {
+      display: flex;
+      justify-content: flex-start;
+    }
+  }
+}

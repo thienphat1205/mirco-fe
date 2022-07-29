@@ -1,0 +1,138 @@
+@import "../../variables.less";
+
+.root {
+  .titlePage {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+  .textTime {
+    margin: 10px 0;
+  }
+  .textFilter {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  .viewExtraFiltered {
+    background-color: @primaryColor;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 3px 8px;
+    cursor: pointer;
+  }
+  .viewFilter {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    margin: 12px 0;
+    .inputOrderCode {
+      width: 250px;
+      :global {
+        .ant-input:placeholder-shown {
+          text-overflow: ellipsis;
+          font-size: 14px;
+        }
+        .ant-input {
+          font-size: 14px;
+        }
+        .ant-input-affix-wrapper {
+          border-radius: 4px !important;
+        }
+      }
+    }
+  }
+}
+
+.formFilter {
+  width: 282px;
+  height: fit-content;
+  background: #ffffff;
+  box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 1rem;
+  .viewForm {
+    .viewButton {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      button:not(:first-child) {
+        margin-left: 8px;
+      }
+      .btnCancel {
+        height: 32px;
+        width: 94px;
+        background-color: @colorPlaceholder;
+        color: @white;
+      }
+      .btnSubmit {
+        height: 32px;
+        width: 103px;
+        background-color: @secondaryColor;
+        color: @white;
+      }
+    }
+    :global {
+      .ant-form-item-label > label {
+        color: @colorPlaceholder;
+        font-size: 13px;
+      }
+      .ant-input {
+        border-radius: 10px;
+        height: 38px;
+        border: none;
+        background-color: #fafafa;
+        box-shadow: none !important;
+      }
+      .ant-form-item {
+        margin-bottom: 0;
+      }
+      .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+        border-radius: 10px;
+        height: fit-content;
+        min-height: 38px;
+        padding: 3px;
+        width: 100%;
+        border: none;
+        background-color: #fafafa;
+        box-shadow: none !important;
+      }
+      .ant-select-single.ant-select-show-arrow .ant-select-selection-item,
+      .ant-select-single.ant-select-show-arrow
+        .ant-select-selection-placeholder {
+        margin-top: 2px;
+      }
+      .ant-select-arrow {
+        color: @secondaryColor;
+      }
+    }
+  }
+}
+
+.viewTable {
+  .textOrderCode {
+    color: @primaryColor;
+    font-weight: 400;
+  }
+  .viewEditMass {
+    display: flex;
+    p {
+      margin: 0;
+    }
+    .iconEdit {
+      margin-left: 0.5rem;
+      font-size: 16px;
+      cursor: pointer;
+      color: @primaryColor;
+    }
+  }
+  :global {
+    .ant-table-pagination.ant-pagination {
+      margin: 16px;
+    }
+  }
+}

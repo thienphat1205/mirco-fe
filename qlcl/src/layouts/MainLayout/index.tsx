@@ -31,12 +31,11 @@ const MainLayout: React.FC = () => {
       loadingGetPermissions = false,
     } = {},
   } = useTypedSelector((state) => state.user);
+  const { collapse, hideHeader } =
+    useTypedSelector((state) => state.commonReducer) || {};
   const [isReady, setIsReady] = useState<boolean>(false);
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const { width } = useWindowDimensions();
-
-  const { collapse, hideHeader } =
-    useTypedSelector((state) => state.commonReducer) || {};
 
   const isMobile = width < 768;
 

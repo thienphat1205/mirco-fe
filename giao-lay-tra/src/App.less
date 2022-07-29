@@ -1,0 +1,127 @@
+@import "~antd/dist/antd.less";
+@import "./variables.less";
+
+@font-face {
+  font-family: "Google Sans";
+  src: url(./assets/fonts/GoogleSans/GoogleSans-Regular/GoogleSans-Regular.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Google Sans";
+  font-weight: 400;
+  src: url(./assets/fonts/GoogleSans/GoogleSans-Medium/GoogleSans-Medium.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Google Sans";
+  font-weight: 500;
+  src: url(./assets/fonts/GoogleSans/GoogleSans-Medium/GoogleSans-Medium.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Google Sans";
+  font-weight: 600;
+  src: url(./assets/fonts/GoogleSans/GoogleSans-Bold/GoogleSans-Bold.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Google Sans";
+  font-weight: bold;
+  src: url(./assets/fonts/GoogleSans/GoogleSans-Bold/GoogleSans-Bold.ttf)
+    format("truetype");
+}
+
+@font-face {
+  font-family: "Google Sans";
+  font-style: italic;
+  src: url(./assets/fonts/GoogleSans/GoogleSans-Italic/GoogleSans-Italic.ttf)
+    format("truetype");
+}
+
+body {
+  font-family: "Google Sans";
+  font-weight: 400;
+}
+
+a {
+  color: #00476f;
+}
+
+.ant-avatar-string {
+  color: @secondaryColor;
+}
+.ant-avatar {
+  background-color: #f0f0f0;
+}
+.ant-layout-content {
+  background-color: @white;
+  padding: 5px 20px;
+}
+
+.ant-btn {
+  border-radius: 12px;
+  box-shadow: none !important;
+  border: none !important;
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.ant-modal-mask {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.ant-notification-notice {
+  border-radius: 10px;
+}
+
+.ant-notification-notice-success {
+  border-left: 10px solid #51c41a;
+}
+
+.ant-notification-notice-error {
+  border-left: 10px solid #ff4d4e;
+}
+
+.ant-notification-notice-warning {
+  border-left: 10px solid #faaf21;
+}
+
+.ant-notification-notice-with-icon .ant-notification-notice-message {
+  font-size: 15px;
+  font-weight: 500;
+  color: @secondaryColor;
+}
+
+.ant-notification-topRight {
+  top: 45px !important;
+}
+
+.ant-notification-notice-close {
+  color: @colorPlaceholder;
+  font-size: larger;
+}
+
+.ant-avatar {
+  background-color: #eee;
+}
+
+.ant-table-thead > tr > th {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.ant-table-summary > tr > th,
+.ant-table-summary > tr > td {
+  border-bottom: none;
+}
+
+.ant-modal-title {
+  color: @secondaryColor;
+  font-weight: 500;
+  font-size: 20px;
+}
