@@ -4,7 +4,7 @@ import Button from "@material-ui/core/Button";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -57,7 +57,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({ isSignedIn, onSignOut }) {
   const classes = useStyles();
-
+  const navigate = useNavigate();
   const onClick = () => {
     if (isSignedIn && onSignOut) {
       onSignOut();
@@ -83,6 +83,14 @@ export default function Header({ isSignedIn, onSignOut }) {
             My Demo ({moment().format("DD-MM-YY")})
           </Typography>
           <div>
+            <Button
+              color="secondary"
+              variant="contained"
+              onClick={() => navigate("/marketing")}
+              style={{ marginRight: "1rem" }}
+            >
+              Check navigate
+            </Button>
             <Button
               color="primary"
               variant="contained"

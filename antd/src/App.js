@@ -1,16 +1,35 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import "./App.less";
-import TestAntd from "./pages/TestAntd";
-import NotFound from "./pages/NotFound";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+// import TestAntd from "./pages/TestAntd";
+// import NotFound from "./pages/NotFound";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+const TestAntd = lazy(() => import("./pages/TestAntd"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default ({ history }) => {
   return (
-    <BrowserRouter history={history}>
-      <Switch>
-        <Route path="/" component={TestAntd} />
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </BrowserRouter>
+    <Router history={history} basename="/antd">
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route
+            path="/"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <TestAntd />
+              </Suspense>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <NotFound />
+              </Suspense>
+            }
+          />
+        </Route>
+      </Routes>
+    </Router>
   );
 };

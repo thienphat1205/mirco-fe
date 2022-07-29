@@ -1,24 +1,27 @@
 import { mount } from "antd/AntdApp";
-import React, { useRef, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default () => {
   const ref = useRef(null);
 
-  const history = useHistory();
+  const location = useLocation();
+
+  const navigate = useNavigate();
+
+  const { pathname } = location;
 
   useEffect(() => {
     const { onParentNavigate } = mount(ref.current, {
-      initialPath: history.location.pathname,
+      initialPath: pathname,
       onNavigate: ({ pathname: nextPathname }) => {
-        const { pathname } = history.location;
         if (nextPathname !== pathname) {
-          history.push(nextPathname);
+          navigate(nextPathname);
         }
       },
     });
-    history.listen(onParentNavigate);
-  });
+    onParentNavigate(location);
+  }, [location]);
 
   return <div ref={ref} />;
 };

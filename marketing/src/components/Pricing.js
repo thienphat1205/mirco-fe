@@ -166,7 +166,7 @@ export default function Pricing() {
           with little customization.
         </Typography>
       </Container>
-      <RouterLink to="/marketing/pricing/123">Pricing detail</RouterLink>
+      <RouterLink to="/pricing/123">Pricing detail</RouterLink>
       {/* End hero unit */}
       <Container maxWidth="md" component="main">
         <Grid container spacing={5} alignItems="flex-end">

@@ -81,7 +81,7 @@ export default function Album() {
             >
               My demo Micro Frontends
             </Typography>
-            <Link to="/marketing/pricing">
+            <Link to="/pricing">
               <Button variant="outlined" color="primary">
                 Pricing Page
               </Button>

@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, useState } from "react";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import {
   StylesProvider,
   createGenerateClassName,
@@ -26,16 +26,16 @@ export default () => {
             isSignedIn={isSignedIn}
           />
           <Suspense fallback={<Progress />}>
-            <Switch>
-              <Route exact path="/">
-                <Redirect to="/marketing" />
-              </Route>
-              <Route path="/auth">
-                <AuthLazy onSignIn={() => setIsSignedIn(true)} />
-              </Route>
-              <Route path="/marketing" component={MarketingLazy} />
-              <Route path="/antd" component={AntdApp} />
-            </Switch>
+            <Routes>
+              <Route path="/" element={<Navigate to="/marketing" />} />
+              <Route
+                path="/auth/*"
+                element={<AuthLazy onSignIn={() => setIsSignedIn(true)} />}
+              />
+              <Route path="/marketing/*" element={<MarketingLazy />} />
+              <Route path="/antd/*" element={<AntdApp />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
           </Suspense>
         </div>
       </StylesProvider>
