@@ -10,26 +10,14 @@ const NotFound = lazy(() => import("./pages/NotFound"));
 export default ({ history }) => {
   return (
     <BrowserRouter basename="/antd">
-      <Routes>
-        <Route element={<MainLayout />}>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <TestAntd />
-              </Suspense>
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <Suspense fallback={<div>Loading...</div>}>
-                <NotFound />
-              </Suspense>
-            }
-          />
-        </Route>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route element={<MainLayout />}>
+            <Route path="/" element={<TestAntd />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 };
