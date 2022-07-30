@@ -32,13 +32,13 @@ const mount = (el, { onNavigate, defaultHistory, initialPath, store }) => {
 
 // If we are in development and in isolation,
 // call mount immediately
-if (ENV === "LOCAL") {
-  const devRoot = document.querySelector("#ktc-lc-dev-root");
+// if (ENV === "LOCAL") {
+//   const devRoot = document.querySelector("#ktc-lc-dev-root");
 
-  if (devRoot) {
-    mount(devRoot, { defaultHistory: createBrowserHistory() });
-  }
-}
+//   if (devRoot) {
+//     mount(devRoot, { defaultHistory: createBrowserHistory() });
+//   }
+// }
 
 // We are running through container
 // and we should export the mount function

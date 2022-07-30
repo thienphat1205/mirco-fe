@@ -6,7 +6,7 @@ const MainLayout = lazy(() => import("@/layouts/MainLayout"));
 const QlclApp = lazy(() => import("@/components/QlclApp"));
 const AuthorCode = lazy(() => import("@/pages/AuthorCode"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
-const GltApp = lazy(() => import("@/components/GltApp"));
+// const GltApp = lazy(() => import("@/components/GltApp"));
 
 export interface RouteType {
   path: string;
@@ -67,13 +67,13 @@ const routeList: LayoutType[] = [
         icon: <FaClone />,
         component: QlclApp,
       },
-      {
-        title: "Giao-Lấy-Trả",
-        path: "/giao-lay-tra/*",
-        key: "giao-lay-tra",
-        icon: <FaClone />,
-        component: GltApp,
-      },
+      // {
+      //   title: "Giao-Lấy-Trả",
+      //   path: "/giao-lay-tra/*",
+      //   key: "giao-lay-tra",
+      //   icon: <FaClone />,
+      //   component: GltApp,
+      // },
 
       {
         title: "Giao Hàng Nhanh",

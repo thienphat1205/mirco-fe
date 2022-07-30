@@ -9,7 +9,7 @@ import useWindowDimensions from "@/hooks/useWindowDimensions";
 import { login } from "@/services/auth";
 import { getLocalStorage } from "@/utils/utils";
 import { Layout } from "antd";
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { lazy, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import styles from "./index.module.less";
 const SiderMenu = lazy(() => import("@/components/SiderMenu"));
@@ -68,28 +68,26 @@ const MainLayout: React.FC = () => {
     return <PageLoading />;
 
   return (
-    <Suspense fallback={<PageLoading />}>
-      <Layout className={styles.root}>
-        {!hideHeader && (
-          <Header onCollapse={handleCollapsedMenu} collapsed={collapsed} />
-        )}
-        <Layout className={styles.layoutHasSider}>
-          <SiderMenu
-            collapsed={collapse || collapsed}
-            isMobile={isMobile}
-            onCollapse={handleCollapsedMenu}
-          />
-          <Content>
-            <Card>
-              <Authorized>
-                <Outlet />
-                <ButtonWarning />
-              </Authorized>
-            </Card>
-          </Content>
-        </Layout>
+    <Layout className={styles.root}>
+      {!hideHeader && (
+        <Header onCollapse={handleCollapsedMenu} collapsed={collapsed} />
+      )}
+      <Layout className={styles.layoutHasSider}>
+        <SiderMenu
+          collapsed={collapse || collapsed}
+          isMobile={isMobile}
+          onCollapse={handleCollapsedMenu}
+        />
+        <Content>
+          <Card>
+            <Authorized>
+              <Outlet />
+              <ButtonWarning />
+            </Authorized>
+          </Card>
+        </Content>
       </Layout>
-    </Suspense>
+    </Layout>
   );
 };
 
