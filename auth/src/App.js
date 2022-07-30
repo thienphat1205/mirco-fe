@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 import {
   StylesProvider,
   createGenerateClassName,
@@ -16,12 +16,12 @@ export default ({ history, onSignIn }) => {
   return (
     <div>
       <StylesProvider generateClassName={generateClassName}>
-        <Router history={history} basename="/auth">
+        <BrowserRouter basename="/auth">
           <Routes>
             <Route path="/signin" element={<Signin onSignIn={onSignIn} />} />
             <Route path="/signup" element={<Signup onSignIn={onSignIn} />} />
           </Routes>
-        </Router>
+        </BrowserRouter>
       </StylesProvider>
     </div>
   );

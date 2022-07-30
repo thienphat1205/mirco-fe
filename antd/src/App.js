@@ -2,14 +2,14 @@ import React, { lazy, Suspense } from "react";
 import "./App.less";
 // import TestAntd from "./pages/TestAntd";
 // import NotFound from "./pages/NotFound";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 const TestAntd = lazy(() => import("./pages/TestAntd"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 export default ({ history }) => {
   return (
-    <Router history={history} basename="/antd">
+    <BrowserRouter basename="/antd">
       <Routes>
         <Route element={<MainLayout />}>
           <Route
@@ -30,6 +30,6 @@ export default ({ history }) => {
           />
         </Route>
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 };
