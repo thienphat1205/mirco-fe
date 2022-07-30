@@ -17,7 +17,6 @@ const prodConfig = {
       remotes: {
         ktc_lc: `ktc_lc@${domain}/ktc-lc/latest/remoteEntry.js`,
         qlcl: `qlcl@${domain}/ktc-lc/latest/remoteEntry.js`,
-        glt: `glt@${domain}/giao-lay-tra/latest/remoteEntry.js`,
       },
       shared: packageJson.dependencies,
     }),

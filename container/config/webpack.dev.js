@@ -21,7 +21,6 @@ const devConfig = {
       remotes: {
         ktc_lc: "ktc_lc@http://localhost:3003/remoteEntry.js",
         qlcl: "qlcl@http://localhost:3002/remoteEntry.js",
-        glt: "glt@http://localhost:3001/remoteEntry.js",
       },
       shared: packageJson.dependencies,
     }),

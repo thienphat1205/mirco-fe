@@ -12,6 +12,8 @@ import { Outlet } from "react-router-dom";
 import styles from "./index.module.less";
 import { login } from "@/services/auth";
 import Authorized from "@/components/Authorized";
+// import SiderMenu from "@/components/SiderMenu";
+// import Header from "@/components/Header";
 const SiderMenu = lazy(() => import("@/components/SiderMenu"));
 const Header = lazy(() => import("@/components/Header"));
 
@@ -72,31 +74,29 @@ const MainLayout: React.FC = () => {
   console.log({ collapsed, collapse });
 
   return (
-    <Suspense fallback={<PageLoading />}>
-      <Layout className={styles.root}>
-        {!hideHeader && (
-          <Header
-            onCollapse={handleCollapsedMenu}
-            collapsed={collapsed}
-            hubList={hubList}
-          />
-        )}
-        <Layout className={styles.layoutHasSider}>
-          <SiderMenu
-            collapsed={collapse || collapsed}
-            isMobile={isMobile}
-            onCollapse={handleCollapsedMenu}
-          />
-          <Content>
-            <Card>
-              <Authorized>
-                <Outlet />
-              </Authorized>
-            </Card>
-          </Content>
-        </Layout>
+    <Layout className={styles.root}>
+      {!hideHeader && (
+        <Header
+          onCollapse={handleCollapsedMenu}
+          collapsed={collapsed}
+          hubList={hubList}
+        />
+      )}
+      <Layout className={styles.layoutHasSider}>
+        <SiderMenu
+          collapsed={collapse || collapsed}
+          isMobile={isMobile}
+          onCollapse={handleCollapsedMenu}
+        />
+        <Content>
+          <Card>
+            <Authorized>
+              <Outlet />
+            </Authorized>
+          </Card>
+        </Content>
       </Layout>
-    </Suspense>
+    </Layout>
   );
 };
 

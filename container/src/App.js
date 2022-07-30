@@ -1,58 +1,34 @@
-import { Suspense } from "react";
+import React, { Suspense, lazy } from "react";
 import { Provider } from "react-redux";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PageLoading from "./components/PageLoading";
-import routeList from "./config/routes";
 import store from "./state/store";
+
+import AuthorCodeLayout from "@/layouts/AuthorCodeLayout";
+import MainLayout from "@/layouts/MainLayout";
+const KtcLcApp = lazy(() => import("@/components/KtcLcApp"));
+const QlclApp = lazy(() => import("@/components/QlclApp"));
+const AuthorCode = lazy(() => import("@/pages/AuthorCode"));
 
 const App = () => {
   return (
     <Provider store={store}>
-      <React.Suspense fallback={<PageLoading />}>
-        <Main />
-      </React.Suspense>
+      <BrowserRouter>
+        <Suspense fallback={<PageLoading />}>
+          <Routes>
+            <Route element={<AuthorCodeLayout />}>
+              <Route path="/sso-login-v2" element={<AuthorCode />} />
+            </Route>
+            <Route element={<MainLayout />}>
+              <Route path="/" element={<Navigate to="/ktc-lc" />} />
+              <Route path="/qlcl/*" element={<QlclApp store={store} />} />
+              <Route path="/ktc-lc/*" element={<KtcLcApp store={store} />} />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Route>
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
     </Provider>
-  );
-};
-
-const Main = () => {
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<PageLoading />}>
-        <Routes>
-          {routeList.map((item) => {
-            const { routes, layout: Layout, key } = item;
-            return (
-              <Route element={<Layout />} key={key}>
-                {routes.map((element) => {
-                  const {
-                    exact,
-                    path,
-                    key,
-                    redirect,
-                    component: Component,
-                  } = element;
-                  return (
-                    <Route
-                      exact={exact}
-                      path={path}
-                      key={key}
-                      element={
-                        redirect ? (
-                          <Navigate to={redirect} />
-                        ) : (
-                          <Component store={store} />
-                        )
-                      }
-                    />
-                  );
-                })}
-              </Route>
-            );
-          })}
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
   );
 };
 

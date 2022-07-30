@@ -11,6 +11,7 @@ import React, { useCallback, useState } from "react";
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { FaChevronDown, FaSignOutAlt } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import ViewSelectApp from "../ViewSelectApp";
 import styles from "./index.module.less";
 
@@ -24,7 +25,7 @@ const ComponentHeader: React.FC<{
     (state) => state.user
   );
   const { collapse } = useTypedSelector((state) => state.commonReducer) || {};
-
+  const navigate = useNavigate();
   const { ssoId = "", profile: { fullname = "" } = {} } = userInfo;
 
   const [openViewSelectApp, setOpenViewSelectApp] = useState<boolean>(false);
@@ -83,7 +84,7 @@ const ComponentHeader: React.FC<{
             style={{ cursor: "pointer" }}
             src={logo}
             alt="logo"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => navigate("/")}
           />
 
           <span style={{ textTransform: "uppercase" }}>Demo Micro FE</span>
