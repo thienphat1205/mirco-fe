@@ -9,6 +9,8 @@ import MainLayout from "@/layouts/MainLayout";
 const KtcLcApp = lazy(() => import("@/components/KtcLcApp"));
 const QlclApp = lazy(() => import("@/components/QlclApp"));
 const AuthorCode = lazy(() => import("@/pages/AuthorCode"));
+const MarketingLazy = lazy(() => import("@/components/MarketingApp"));
+const AntdApp = lazy(() => import("@/components/AntdApp"));
 
 const App = () => {
   return (
@@ -20,10 +22,15 @@ const App = () => {
               <Route path="/sso-login-v2" element={<AuthorCode />} />
             </Route>
             <Route element={<MainLayout />}>
-              <Route path="/" element={<Navigate to="/ktc-lc" />} />
+              <Route path="/" element={<Navigate to="/marketing" />} />
               <Route path="/qlcl/*" element={<QlclApp store={store} />} />
               <Route path="/ktc-lc/*" element={<KtcLcApp store={store} />} />
-              <Route path="*" element={<Navigate to="/" />} />
+              <Route
+                path="/marketing/*"
+                element={<MarketingLazy store={store} />}
+              />
+              <Route path="/antd/*" element={<AntdApp store={store} />} />
+              {/* <Route path="*" element={<Navigate to="/" />} /> */}
             </Route>
           </Routes>
         </Suspense>

@@ -1,4 +1,5 @@
 const { merge } = require("webpack-merge");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const commonConfig = require("./webpack.common");
 const packageJson = require("../package.json");
@@ -6,10 +7,10 @@ const packageJson = require("../package.json");
 const devConfig = {
   mode: "development",
   output: {
-    publicPath: "http://localhost:3000/",
+    publicPath: "http://localhost:3004/",
   },
   devServer: {
-    port: 3000,
+    port: 3004,
     // historyApiFallback: {
     //   index: "index.html",
     // },
@@ -17,14 +18,15 @@ const devConfig = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "container",
-      remotes: {
-        ktc_lc: "ktc_lc@http://localhost:3003/remoteEntry.js",
-        qlcl: "qlcl@http://localhost:3002/remoteEntry.js",
-        marketing: "marketing@http://localhost:3005/remoteEntry.js",
-        antd: "antd@http://localhost:3004/remoteEntry.js",
+      name: "antd",
+      filename: "remoteEntry.js",
+      exposes: {
+        "./AntdApp": "./src/bootstrap",
       },
       shared: packageJson.dependencies,
+    }),
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
     }),
   ],
 };

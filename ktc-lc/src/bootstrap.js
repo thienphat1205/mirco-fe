@@ -32,7 +32,7 @@ const mount = (el, { onNavigate, defaultHistory, initialPath, store }) => {
 
 // If we are in development and in isolation,
 // call mount immediately
-// if (ENV === "LOCAL") {
+// if (process.env.NODE_ENV === "development") {
 //   const devRoot = document.querySelector("#ktc-lc-dev-root");
 
 //   if (devRoot) {

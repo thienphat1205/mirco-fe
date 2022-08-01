@@ -87,6 +87,34 @@ const ComponentHeader: React.FC<{
             onClick={() => navigate("/")}
           />
 
+          <div
+            style={{ marginLeft: "2rem", cursor: "pointer" }}
+            onClick={() => navigate("/antd")}
+          >
+            antd
+          </div>
+
+          <div
+            style={{ marginLeft: "2rem", cursor: "pointer" }}
+            onClick={() => navigate("/marketing")}
+          >
+            marketing
+          </div>
+
+          <div
+            style={{ marginLeft: "2rem", cursor: "pointer" }}
+            onClick={() => navigate("/ktc-lc")}
+          >
+            ktc-lc
+          </div>
+
+          <div
+            style={{ marginLeft: "2rem", cursor: "pointer" }}
+            onClick={() => navigate("/qlcl")}
+          >
+            qlcl
+          </div>
+
           <span style={{ textTransform: "uppercase" }}>Demo Micro FE</span>
         </div>
         <div className={styles.contentRight}>
