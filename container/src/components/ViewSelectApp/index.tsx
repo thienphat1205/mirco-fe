@@ -3,6 +3,7 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 import { appList, getEnv } from "@/utils/utils";
 import { Col, Row } from "antd";
 import React, { Fragment, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import styles from "./index.module.less";
 
@@ -13,9 +14,8 @@ interface ViewProps {
 }
 
 const ViewSelectApp: React.FC<ViewProps> = ({ isOpen, onClose }) => {
-
   const { allowedAppList } = useTypedSelector((state) => state.user);
-
+  const navigate = useNavigate();
   const [appDataDisplay, setAppDataDisplay] = useState<any[]>([]);
 
   useEffect(() => {
@@ -33,14 +33,17 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen, onClose }) => {
       })
       .sort((a: any, b: any) => a?.indexApp - b?.indexApp);
     const perChunk = 4;
-    const result = formatData.reduce((resultArray: any, item: any, index: any) => {
-      const chunkIndex = Math.floor(index / perChunk);
-      if (!resultArray[chunkIndex]) {
-        resultArray[chunkIndex] = [];
-      }
-      resultArray[chunkIndex].push(item);
-      return resultArray;
-    }, []);
+    const result = formatData.reduce(
+      (resultArray: any, item: any, index: any) => {
+        const chunkIndex = Math.floor(index / perChunk);
+        if (!resultArray[chunkIndex]) {
+          resultArray[chunkIndex] = [];
+        }
+        resultArray[chunkIndex].push(item);
+        return resultArray;
+      },
+      []
+    );
     setAppDataDisplay(result);
   }, [allowedAppList]);
 
@@ -83,8 +86,8 @@ const ViewSelectApp: React.FC<ViewProps> = ({ isOpen, onClose }) => {
     // if (prevPathAppSelected) {
     //   href = `${link}${prevPathAppSelected}`;
     // }
-    // navigate(link);
-    window.location.href = link;
+    navigate(link);
+    // window.location.href = link;
     onClose();
   };
 
