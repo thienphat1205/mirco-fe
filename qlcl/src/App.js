@@ -3,7 +3,12 @@ import routeList from "@/config/routes";
 import { Suspense, useEffect, lazy } from "react";
 import { Helmet } from "react-helmet";
 import { Provider } from "react-redux";
-import { Router, Navigate, Route, Routes } from "react-router-dom";
+import {
+  unstable_HistoryRouter as HistoryRouter,
+  Navigate,
+  Route,
+  Routes,
+} from "react-router-dom";
 import "./App.less";
 import ticketReducer from "./state/reducers/ticketReducer";
 import { store as RelatedStore } from "./state/store";
@@ -27,7 +32,7 @@ const App = (props) => {
 
   return (
     <Provider store={store || {}}>
-      <Router location={history.location} navigator={history} basename="/qlcl">
+      <HistoryRouter history={history} basename="/qlcl">
         <Suspense fallback={<PageLoading />}>
           <Routes>
             <Route element={<AuthorCodeLayout />}>
@@ -43,7 +48,7 @@ const App = (props) => {
             </Route>
           </Routes>
         </Suspense>
-      </Router>
+      </HistoryRouter>
     </Provider>
   );
 };

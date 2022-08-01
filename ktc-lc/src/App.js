@@ -3,7 +3,13 @@ import routeList from "@/config/routes";
 import { Suspense, useEffect, lazy } from "react";
 import { Helmet } from "react-helmet";
 import { Provider } from "react-redux";
-import { Router, Navigate, Route, Routes } from "react-router-dom";
+import {
+  Router,
+  Navigate,
+  Route,
+  Routes,
+  unstable_HistoryRouter as HistoryRouter,
+} from "react-router-dom";
 import "./App.less";
 import reducer from "./state/reducer";
 import { store as RelatedStore } from "./state/store";
@@ -35,11 +41,7 @@ const App = (props) => {
 
   return (
     <Provider store={store || {}}>
-      <Router
-        location={history.location}
-        navigator={history}
-        basename="/ktc-lc"
-      >
+      <HistoryRouter history={history} basename="/ktc-lc">
         <Suspense fallback={<PageLoading />}>
           <Routes>
             <Route element={<AuthorCodeLayout />}>
@@ -64,7 +66,7 @@ const App = (props) => {
             </Route>
           </Routes>
         </Suspense>
-      </Router>
+      </HistoryRouter>
     </Provider>
   );
 };
