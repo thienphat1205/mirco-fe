@@ -1,23 +1,15 @@
 import React from "react";
-import { Result, Button } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Result } from "antd";
+import s from "./index.module.less";
 
 const NotFound: React.FC = () => {
-  let navigate = useNavigate();
-  const handleClick = () => {
-    navigate("/");
-  };
   return (
-    <Result
-      status="404"
-      title="404"
-      subTitle="Trang bạn truy cập không tồn tại."
-      extra={
-        <Button onClick={handleClick} type="primary">
-          Quay về trang chủ
-        </Button>
-      }
-    />
+    <div className={s.root}>
+      <Result
+        status="warning"
+        title="There are some problems with your operation."
+      />
+    </div>
   );
 };
 

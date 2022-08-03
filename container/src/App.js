@@ -4,6 +4,7 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import PageLoading from "./components/PageLoading";
 import routeList from "./config/routes";
 import store from "./state/store";
+import "./App.less";
 
 const App = () => {
   return (
